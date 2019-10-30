@@ -1,0 +1,21 @@
+<h1>Create Profile</h1>
+
+<%= form_with model: @profile, local: true do |form| %>
+  <div>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+  <div>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+  <div>
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+  <div>
+    <%= form.label :bio %>
+    <%= form.text_area :bio %>
+  </div>
+  <%= form.submit %>
+<% end %>
