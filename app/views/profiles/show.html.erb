@@ -1,4 +1,4 @@
-<h1>Welcome, <%= @profile.first_name %></h1>
+<h1><%= @profile.first_name %></h1>
 
 <div>
   <h2>Name</h2>
@@ -19,3 +19,8 @@
   </p>
 </div>
 
+<% if user_signed_in? %>
+  <% if @profile.user_id == current_user.id %>
+    <%= link_to 'Edit Profile', edit_profile_path %>
+  <% end %>
+<% end %>

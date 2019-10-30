@@ -10,7 +10,13 @@ class ProfilesController < ApplicationController
   end
 
   def new
-    @profile = Profile.new
+    # redirect to show profile if user already has a profile
+    @user = User.find(current_user.id)
+    if @user.profile
+      redirect_to @user.profile
+    else
+      @profile = Profile.new
+    end
   end
 
   def create
@@ -25,7 +31,7 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    
+    @user = User.find(current_user.id)
   end
 
   def update
