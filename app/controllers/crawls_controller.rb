@@ -15,6 +15,7 @@ class CrawlsController < ApplicationController
   end
 
   def create
+    pp params
     @user = User.find(current_user.id)
     @crawl = @user.crawls.create(crawl_params)
     @crawl.locations.create(location_params)
