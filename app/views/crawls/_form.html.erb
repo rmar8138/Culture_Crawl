@@ -1,0 +1,35 @@
+<%= form_with model: @crawl, local: true do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+  <h3>Itinerary goes here</h3>
+  <div>
+    <%= form.label :crawl_date %>
+    <%= form.date_field :crawl_date, value: Date.today %>
+  </div>
+  <div>
+    <%= form.label :crawl_time %>
+    <%= form.time_field :crawl_time %>
+  </div>
+  <div>
+    <%= form.label :max_attendees %>
+    <%= form.number_field :max_attendees %>
+  </div>
+  <div>
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+  <%= form.submit %>
+  <% if type == "edit" %>
+    <%= link_to 'Delete Crawl', crawl_path, method: :delete %>
+  <% end %>
+<% end %>

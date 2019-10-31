@@ -1,6 +1,9 @@
 <h1>
   <%= @crawl.title %>
 </h1>
+<% if @crawl.user.id == current_user.id %>
+  <%= link_to 'Edit', edit_crawl_path %>
+<% end %>
 <p>
   <%= @crawl.location %>
 </p>

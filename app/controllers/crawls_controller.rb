@@ -14,9 +14,10 @@ class CrawlsController < ApplicationController
   end
 
   def create
+    pp params
     @user = User.find(current_user.id)
     @crawl = @user.crawls.create(crawl_params)
-    if 
+    if @crawl
       redirect_to crawl_path(@crawl)
     else
       render 'new'
@@ -28,9 +29,21 @@ class CrawlsController < ApplicationController
   end
 
   def update
+    @crawl = Crawl.find(params[:id])
+    if @crawl.update(crawl_params)
+      redirect_to crawl_path(@crawl)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    @crawl = Crawl.find(params[:id])
+    if @crawl.delete
+      redirect_to profile_path(@crawl.user.profile)
+    else
+      render 'edit'
+    end
   end
 
   private
