@@ -22,5 +22,6 @@
 <% if user_signed_in? %>
   <% if @profile.user_id == current_user.id %>
     <%= link_to 'Edit Profile', edit_profile_path %>
+    <%= link_to 'Create new Crawl', new_crawl_path %>
   <% end %>
 <% end %>

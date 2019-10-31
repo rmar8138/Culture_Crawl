@@ -1,2 +1,34 @@
-<h1>Crawls#new</h1>
-<p>Find me in app/views/crawls/new.html.erb</p>
+<h1>New Crawl</h1>
+
+<%= form_with model: @crawl, local: true do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+  <h3>Itinerary goes here</h3>
+  <div>
+    <%= form.label :date %>
+    <%= select_date Date.today, prefix: :date %>
+  </div>
+  <div>
+    <%= form.label :time %>
+    <%= select_time prefix: :time %>
+  </div>
+  <div>
+    <%= form.label :max_attendees %>
+    <%= form.number_field :max_attendees %>
+  </div>
+  <div>
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+  <%= form.submit %>
+<% end %>
