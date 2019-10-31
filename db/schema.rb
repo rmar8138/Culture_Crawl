@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_30_034722) do
+ActiveRecord::Schema.define(version: 2019_10_31_003119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "crawls", force: :cascade do |t|
+    t.string "title"
+    t.string "location"
+    t.text "description"
+    t.integer "price"
+    t.integer "rating"
+    t.integer "max_attendees"
+    t.date "crawl_date"
+    t.time "crawl_time"
+    t.boolean "finished"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_crawls_on_user_id"
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string "first_name"
@@ -39,5 +55,6 @@ ActiveRecord::Schema.define(version: 2019_10_30_034722) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "crawls", "users"
   add_foreign_key "profiles", "users"
 end

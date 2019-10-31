@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  location: MyString
+  description: MyText
+  price: 1
+  rating: 1
+  max_attendees: 1
+  crawl_date: 2019-10-31
+  crawl_time: 2019-10-31 11:31:20
+  finished: false
+  user: one
+
+two:
+  title: MyString
+  location: MyString
+  description: MyText
+  price: 1
+  rating: 1
+  max_attendees: 1
+  crawl_date: 2019-10-31
+  crawl_time: 2019-10-31 11:31:20
+  finished: false
+  user: two
