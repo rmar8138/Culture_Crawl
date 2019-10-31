@@ -35,11 +35,16 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @user = User.find(current_user.id)
+    @profile = User.find(current_user.id).profile
   end
 
   def update
-    
+    @profile = User.find(current_user.id).profile
+    if @profile.update(profile_params)
+      redirect_to profile_path(@profile)
+    else
+      render 'edit'
+    end
   end
 
   private
