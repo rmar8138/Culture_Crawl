@@ -1,2 +1,22 @@
-<h1>Crawls#show</h1>
-<p>Find me in app/views/crawls/show.html.erb</p>
+<h1>
+  <%= @crawl.title %>
+</h1>
+<p>
+  <%= @crawl.location %>
+</p>
+<p>
+  <%= @crawl.user.profile.first_name %>
+</p>
+<p>
+  <%= @crawl.description %>
+</p>
+<h2>Itinerary</h2>
+<h2>Crawl Route</h2>
+<h2>Your Guide</h2>
+<p>
+  <%= @crawl.user.profile.first_name %>
+</p>
+<p>
+  <%= @crawl.user.profile.bio %>
+</p>
+
