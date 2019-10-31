@@ -1,4 +1,5 @@
 <%= form_with model: @crawl, local: true do |form| %>
+  <h2>General Info</h2>
   <div>
     <%= form.label :title %>
     <%= form.text_field :title %>
@@ -11,7 +12,24 @@
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
-  <h3>Itinerary goes here</h3>
+  <h2>Itinerary</h2>
+  <div>
+    <%= fields_for :location, @location do |location_fields| %>
+      <div>
+        <%= location_fields.label :title %>
+        <%= location_fields.text_field :title %>
+      </div>
+      <div>
+        <%= location_fields.label :location %>
+        <%= location_fields.text_field :location %>
+      </div>
+      <div>
+        <%= location_fields.label :description %>
+        <%= location_fields.text_area :description %>
+      </div>
+    <% end %>
+  </div>
+  <h2>Availability</h2>
   <div>
     <%= form.label :crawl_date %>
     <%= form.date_field :crawl_date, value: Date.today %>
@@ -24,6 +42,7 @@
     <%= form.label :max_attendees %>
     <%= form.number_field :max_attendees %>
   </div>
+  <h2>Pricing</h2>
   <div>
     <%= form.label :price %>
     <%= form.number_field :price %>
