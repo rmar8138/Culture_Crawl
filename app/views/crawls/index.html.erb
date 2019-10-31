@@ -1,2 +1,17 @@
-<h1>Crawls#index</h1>
-<p>Find me in app/views/crawls/index.html.erb</p>
+<h1>Crawls</h1>
+
+<% @crawls.each do |crawl| %>
+  <h2>
+    <%= crawl.title %>
+  </h2>
+  <span>
+    <%= link_to "#{crawl.user.profile.first_name}", profile_path(crawl.user.profile) %>
+  </span>
+  <p>
+    <%= crawl.description %>
+  </p>
+  <span>
+    <%= number_to_currency(crawl.price) %>
+  </span>
+  <%= link_to 'See More', crawl_path(crawl) %>
+<% end %>
