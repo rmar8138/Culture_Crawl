@@ -6,7 +6,11 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @profile = Profile.find(params[:id])
+    if Profile.exists?(params[:id])
+      @profile = Profile.find(params[:id])
+    else
+      redirect_to new_profile_path
+    end
   end
 
   def new
