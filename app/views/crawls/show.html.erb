@@ -1,0 +1,25 @@
+<h1>
+  <%= @crawl.title %>
+</h1>
+<% if @crawl.user.id == current_user.id %>
+  <%= link_to 'Edit', edit_crawl_path %>
+<% end %>
+<p>
+  <%= @crawl.location %>
+</p>
+<p>
+  <%= @crawl.user.profile.first_name %>
+</p>
+<p>
+  <%= @crawl.description %>
+</p>
+<h2>Itinerary</h2>
+<h2>Crawl Route</h2>
+<h2>Your Guide</h2>
+<p>
+  <%= @crawl.user.profile.first_name %>
+</p>
+<p>
+  <%= @crawl.user.profile.bio %>
+</p>
+

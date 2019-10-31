@@ -22,5 +22,19 @@
 <% if user_signed_in? %>
   <% if @profile.user_id == current_user.id %>
     <%= link_to 'Edit Profile', edit_profile_path %>
+    <%= link_to 'Create new Crawl', new_crawl_path %>
+  <% end %>
+<% end %>
+
+<% if @profile.user.crawls.any? %>
+  <h2>Crawls</h2>
+  <% @profile.user.crawls.each do |crawl| %>
+    <h3>
+      <%= crawl.title %>
+    </h3>
+    <span>
+      <%= number_to_currency(crawl.price) %>
+    </span>
+    <%= link_to 'Details', crawl_path(crawl) %>
   <% end %>
 <% end %>
