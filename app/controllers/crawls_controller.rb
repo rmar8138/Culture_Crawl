@@ -18,7 +18,7 @@ class CrawlsController < ApplicationController
     pp params
     @user = User.find(current_user.id)
     @crawl = @user.crawls.create(crawl_params)
-    @crawl.locations.create(location_params)
+    @crawl.locations.build
     if @crawl
       redirect_to crawl_path(@crawl)
     else
@@ -61,7 +61,8 @@ class CrawlsController < ApplicationController
       :crawl_date,
       :crawl_time,
       :finished,
-      :user_id
+      :user_id,
+      locations_attributes: Location.attribute_names.map(&:to_sym).push(:_destroy)
     )
   end
 
