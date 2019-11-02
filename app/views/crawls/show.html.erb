@@ -14,6 +14,17 @@
   <%= @crawl.description %>
 </p>
 <h2>Itinerary</h2>
+  <% @crawl.locations.each do |location| %>
+    <h3>
+      <%= location.title %>
+    </h3>
+    <span>
+      <%= location.location %>
+    </span>
+    <p>
+      <%= location.description %>
+    </p>
+  <% end %>
 <h2>Crawl Route</h2>
 <h2>Your Guide</h2>
 <p>

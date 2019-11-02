@@ -11,12 +11,14 @@ class CrawlsController < ApplicationController
 
   def new
     @crawl = Crawl.new
+    @location = Location.new
   end
 
   def create
     pp params
     @user = User.find(current_user.id)
     @crawl = @user.crawls.create(crawl_params)
+    @crawl.locations.build
     if @crawl
       redirect_to crawl_path(@crawl)
     else
@@ -59,7 +61,16 @@ class CrawlsController < ApplicationController
       :crawl_date,
       :crawl_time,
       :finished,
-      :user_id
+      :user_id,
+      locations_attributes: Location.attribute_names.map(&:to_sym).push(:_destroy)
+    )
+  end
+
+  def location_params
+    params.require(:location).permit(
+      :title,
+      :location,
+      :description
     )
   end
 end

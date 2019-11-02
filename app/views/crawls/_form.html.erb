@@ -1,4 +1,5 @@
 <%= form_with model: @crawl, local: true do |form| %>
+  <h2>General Info</h2>
   <div>
     <%= form.label :title %>
     <%= form.text_field :title %>
@@ -11,7 +12,16 @@
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
-  <h3>Itinerary goes here</h3>
+  <h2>Itinerary</h2>
+  <div id="itinerary">
+    <%= form.fields_for :locations do |location| %>
+      <%= render 'location_fields', form: location %>
+    <% end %>
+      <div class="links">
+        <%= link_to_add_association "Add new location", form, :locations, form_name: 'form' %>
+      </div>
+  </div>
+  <h2>Availability</h2>
   <div>
     <%= form.label :crawl_date %>
     <%= form.date_field :crawl_date, value: Date.today %>
@@ -24,12 +34,11 @@
     <%= form.label :max_attendees %>
     <%= form.number_field :max_attendees %>
   </div>
+  <h2>Pricing</h2>
   <div>
     <%= form.label :price %>
     <%= form.number_field :price %>
   </div>
   <%= form.submit %>
-  <% if type == "edit" %>
-    <%= link_to 'Delete Crawl', crawl_path, method: :delete %>
-  <% end %>
 <% end %>
+
