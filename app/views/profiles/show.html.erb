@@ -1,5 +1,7 @@
 <h1><%= @profile.first_name %></h1>
 
+<%= image_tag @profile.profile_image if @profile.profile_image.attached? %>
+
 <div>
   <h2>Name</h2>
   <p>

@@ -1,4 +1,8 @@
 <div class="nested-fields">
+  <div>
+    <%= form.label :location_image %>
+    <%= form.file_field :location_image, accept: "image/png,image/gif,image/jpeg,image/jpg" %>
+  </div>
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title, id: "location_1" %>

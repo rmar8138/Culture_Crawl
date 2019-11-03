@@ -1,3 +1,4 @@
+<%= image_tag @crawl.crawl_image if @crawl.crawl_image.attached? %>
 <h1>
   <%= @crawl.title %>
 </h1>
@@ -15,6 +16,7 @@
 </p>
 <h2>Itinerary</h2>
   <% @crawl.locations.each do |location| %>
+    <%= image_tag location.location_image if location.location_image.attached? %>
     <h3>
       <%= location.title %>
     </h3>
