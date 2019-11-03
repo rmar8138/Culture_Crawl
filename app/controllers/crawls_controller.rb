@@ -33,6 +33,7 @@ class CrawlsController < ApplicationController
   def update
     @crawl = Crawl.find(params[:id])
     if @crawl.update(crawl_params)
+      p crawl_params
       redirect_to crawl_path(@crawl)
     else
       render 'edit'
@@ -62,15 +63,8 @@ class CrawlsController < ApplicationController
       :crawl_time,
       :finished,
       :user_id,
-      locations_attributes: Location.attribute_names.map(&:to_sym).push(:_destroy)
-    )
-  end
-
-  def location_params
-    params.require(:location).permit(
-      :title,
-      :location,
-      :description
+      :crawl_image,
+      locations_attributes: Location.attribute_names.map(&:to_sym).push(:_destroy, :location_image)
     )
   end
 end

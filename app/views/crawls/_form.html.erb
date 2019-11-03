@@ -1,6 +1,10 @@
 <%= form_with model: @crawl, local: true do |form| %>
   <h2>General Info</h2>
   <div>
+    <%= form.label :crawl_image %>
+    <%= form.file_field :crawl_image, accept: "image/png,image/gif,image/jpeg,image/jpg" %>
+  </div>
+  <div>
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
