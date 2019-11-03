@@ -38,7 +38,11 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @profile = User.find(current_user.id).profile
+    @profile = User.find(params[:id]).profile
+
+    if @profile.user_id != current_user.id
+      redirect_to profile_path(@profile)
+    end
   end
 
   def update

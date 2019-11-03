@@ -14,14 +14,16 @@
 <p>
   <%= @crawl.description %>
 </p>
-<h2>Attending</h2>
-<% @attendees.each do |attendee| %>
-  <ul>
+<h2>
+  Attending(<%= @attendees.length %>)
+</h2>
+<ul>
+  <% @attendees.each do |attendee| %>
     <li>
       <%= link_to attendee.profile.first_name, profile_path(attendee.profile) %>
     </li>
-  </ul>
-<% end %>
+  <% end %>
+</ul>
 <h2>Itinerary</h2>
   <% @crawl.locations.each do |location| %>
     <%= image_tag location.location_image if location.location_image.attached? %>

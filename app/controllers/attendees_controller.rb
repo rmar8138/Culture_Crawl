@@ -1,4 +1,6 @@
 class AttendeesController < ApplicationController
+  before_action :authenticate_user!
+  
   def create
     Attendee.create(
       crawl_id: attendee_params[:crawl],

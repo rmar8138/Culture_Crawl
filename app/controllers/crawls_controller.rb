@@ -31,6 +31,9 @@ class CrawlsController < ApplicationController
 
   def edit
     @crawl = Crawl.find(params[:id])
+    if @crawl.user_id != current_user.id
+      redirect_to crawl_path(@crawl)
+    end
   end
 
   def update
