@@ -9,11 +9,21 @@
   <%= @crawl.location %>
 </p>
 <p>
-  <%= @crawl.user.profile.first_name %>
+  <%= link_to @crawl.user.profile.first_name, profile_path(@crawl.user.profile) %>
 </p>
 <p>
   <%= @crawl.description %>
 </p>
+<h2>
+  Attending(<%= @attendees.length %>)
+</h2>
+<ul>
+  <% @attendees.each do |attendee| %>
+    <li>
+      <%= link_to attendee.profile.first_name, profile_path(attendee.profile) %>
+    </li>
+  <% end %>
+</ul>
 <h2>Itinerary</h2>
   <% @crawl.locations.each do |location| %>
     <%= image_tag location.location_image if location.location_image.attached? %>
@@ -36,3 +46,7 @@
   <%= @crawl.user.profile.bio %>
 </p>
 
+<% if @crawl.user.id != current_user.id %>
+  <%= link_to 'Book', attendees_path(crawl: @crawl.id, user: current_user.id), method: :post %>
+<% end %>
+  

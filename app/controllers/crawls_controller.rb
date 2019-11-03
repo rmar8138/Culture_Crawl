@@ -7,6 +7,9 @@ class CrawlsController < ApplicationController
 
   def show
     @crawl = Crawl.find(params[:id])
+    @attendees = @crawl.attendees.map do |attendee|
+      User.find(attendee.user_id)
+    end
   end
 
   def new
@@ -28,6 +31,9 @@ class CrawlsController < ApplicationController
 
   def edit
     @crawl = Crawl.find(params[:id])
+    if @crawl.user_id != current_user.id
+      redirect_to crawl_path(@crawl)
+    end
   end
 
   def update

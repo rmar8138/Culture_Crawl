@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
+  # page routes
+  get 'pages/home'
+  root to: "pages#home"
+
+  # crawl routes
   resources :crawls
+
+  # location routes
   resources :locations
   devise_for :users, controllers: { registrations: "registrations" }
-  get 'pages/home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: "pages#home"
+
+  # attendee routes
+  post "/attendees", to: "attendees#create", as: "attendees"
 
   # profile routes
   get "/profiles", to: "profiles#index", as: "profiles"
