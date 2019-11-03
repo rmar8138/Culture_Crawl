@@ -7,6 +7,9 @@ class CrawlsController < ApplicationController
 
   def show
     @crawl = Crawl.find(params[:id])
+    @attendees = @crawl.attendees.map do |attendee|
+      User.find(attendee.user_id)
+    end
   end
 
   def new
