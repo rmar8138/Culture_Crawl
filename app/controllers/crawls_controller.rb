@@ -10,6 +10,33 @@ class CrawlsController < ApplicationController
     @attendees = @crawl.attendees.map do |attendee|
       User.find(attendee.user_id)
     end
+
+    session = Stripe::Checkout::session.create(
+      payment_method_types: ["card"],
+      customer_email: current_user.email,
+      line_items: [
+        {
+          title: @crawl.title,
+          location: @crawl.location,
+          description: @crawl.description,
+          price: @crawl.price,
+          crawl_date: @crawl.crawl_date,
+          crawl_time: @crawl.crawl_time,
+          currency: "aud",
+          quantity: 1
+        }
+      ],
+      payment_intent_data: {
+        metadata: {
+          user_id: current_user.id,
+          crawl_id: @crawl.id
+        }
+      },
+      success_url: "#{root_url}payment/success?userId=#{current_user.id}&crawlId=#{@crawl.id}",
+      cancel_url: "#{root_url}crawls/#{@crawl.id}"
+    )
+
+    @session_id = session.id
   end
 
   def new
