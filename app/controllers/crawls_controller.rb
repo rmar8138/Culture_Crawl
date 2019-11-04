@@ -18,11 +18,10 @@ class CrawlsController < ApplicationController
   end
 
   def create
-    pp params
-    @user = User.find(current_user.id)
-    @crawl = @user.crawls.create(crawl_params)
+    @crawl = Crawl.new(crawl_params)
+    @crawl.user_id = current_user.id
     @crawl.locations.build
-    if @crawl
+    if @crawl.save
       redirect_to crawl_path(@crawl)
     else
       render 'new'
