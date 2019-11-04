@@ -11,17 +11,16 @@ class CrawlsController < ApplicationController
       User.find(attendee.user_id)
     end
 
-    session = Stripe::Checkout::session.create(
+    pp @crawl.title, @crawl.location, @crawl.description
+
+    session = Stripe::Checkout::Session.create(
       payment_method_types: ["card"],
       customer_email: current_user.email,
       line_items: [
         {
-          title: @crawl.title,
-          location: @crawl.location,
+          name: @crawl.title,
           description: @crawl.description,
-          price: @crawl.price,
-          crawl_date: @crawl.crawl_date,
-          crawl_time: @crawl.crawl_time,
+          amount: @crawl.price,
           currency: "aud",
           quantity: 1
         }
@@ -37,6 +36,7 @@ class CrawlsController < ApplicationController
     )
 
     @session_id = session.id
+    @public_key = Rails.application.credentials.dig(:stripe, :public_key)
   end
 
   def new

@@ -31,7 +31,7 @@ class ProfilesController < ApplicationController
     @profile.user_id = current_user.id
    
     if @profile.save
-      redirect_to profile_path(@user.profile)
+      redirect_to profile_path(@profile)
     else
       render "new"
     end
