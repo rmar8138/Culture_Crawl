@@ -13,6 +13,8 @@ class AttendeesController < ApplicationController
         user_id: attendee_params[:user]
       )
     end
+
+    redirect_to crawl_path(@crawl)
   end
 
   def destroy
