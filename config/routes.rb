@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   # attendee routes
   post "/attendees", to: "attendees#create", as: "attendees"
+  delete "/attendees", to: "attendees#destroy", as: "attendee"
 
   # profile routes
   get "/profiles", to: "profiles#index", as: "profiles"
