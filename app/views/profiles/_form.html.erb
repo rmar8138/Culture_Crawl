@@ -1,4 +1,18 @@
 <%= form_with model: profile, local: true do |form| %>
+  <% if profile.errors.any? %>
+    <div>
+      <h2>
+        <%= pluralize(profile.errors.count, "error") %>
+      </h2>
+      <ul>
+        <% profile.errors.full_messages.each do |message| %>
+          <li>
+            <%= message %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div>
     <%= form.label :profile_image %>
     <%= form.file_field :profile_image, accept: "image/png,image/gif,image/jpeg,image/jpg" %>
