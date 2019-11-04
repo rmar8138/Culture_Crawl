@@ -66,3 +66,5 @@ gem "devise", "~> 4.7"
 gem "jquery-rails", "~> 4.3"
 
 gem "cocoon", "~> 1.2"
+
+gem "active_storage_validations", "~> 0.8.4"

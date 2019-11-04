@@ -1,4 +1,18 @@
-<%= form_with model: @crawl, local: true do |form| %>
+<%= form_with model: crawl, local: true do |form| %>
+  <% if crawl.errors.any? %>
+    <div>
+      <h2>
+        <%= pluralize(crawl.errors.count, "error") %>
+      </h2>
+      <ul>
+        <% crawl.errors.full_messages.each do |message| %>
+          <li>
+            <%= message %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <h2>General Info</h2>
   <div>
     <%= form.label :crawl_image %>
