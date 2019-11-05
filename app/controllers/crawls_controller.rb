@@ -43,6 +43,10 @@ class CrawlsController < ApplicationController
   end
 
   def create
+
+    # date_values = params[:date].values.map(&:to_i)
+    # DateTime.new(*date_values)
+
     @crawl = Crawl.new(crawl_params)
     @crawl.user_id = current_user.id
     @crawl.locations.build

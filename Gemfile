@@ -70,3 +70,5 @@ gem "cocoon", "~> 1.2"
 gem "active_storage_validations", "~> 0.8.4"
 
 gem "stripe", "~> 5.7"
+
+gem "whenever", "~> 1.0"

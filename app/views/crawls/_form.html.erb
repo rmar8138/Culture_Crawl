@@ -41,12 +41,8 @@
   </div>
   <h2>Availability</h2>
   <div>
-    <%= form.label :crawl_date %>
-    <%= form.date_field :crawl_date, value: Date.today %>
-  </div>
-  <div>
     <%= form.label :crawl_time %>
-    <%= form.time_field :crawl_time %>
+    <%= select_time() %>
   </div>
   <div>
     <%= form.label :max_attendees %>
