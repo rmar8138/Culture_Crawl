@@ -25,11 +25,19 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    
+    @review = Review.find(params[:review_id])
+    @crawl = Crawl.find(params[:crawl_id])
   end
 
   def update
+    @review = Review.find(params[:review_id])
+    @crawl = Crawl.find(params[:crawl_id])
     
+    if @review.update(review_params)
+      redirect_to crawl_path(@crawl)
+    else
+      render "edit"
+    end
   end
 
   def destroy

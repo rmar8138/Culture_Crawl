@@ -68,7 +68,7 @@
           <%= review.body %>
         </p>
         <% if review.user.id == current_user.id %>
-          <%= link_to 'Edit', edit_review_path(crawl_id: @crawl.id) %>
+          <%= link_to 'Edit', edit_review_path(review_id: review.id, crawl_id: @crawl.id) %>
         <% end %>
       <% end %>
     <% else %>
