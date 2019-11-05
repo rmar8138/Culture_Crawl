@@ -50,7 +50,18 @@
   <% if @attendees.include?(current_user) %>
     <%= link_to 'Cancel Booking', attendee_path(crawl: @crawl.id, user: current_user.id), method: :delete %>
   <% else %>
-    <%= link_to 'Book', attendees_path(crawl: @crawl.id, user: current_user.id), method: :post %>
+    <button data-stripe="payment">Book</button>
   <% end %>
 <% end %>
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+  document.querySelector("[data-stripe='payment']").addEventListener("click", () => {
+    const stripe = Stripe("<%= @public_key %>");
+    stripe.redirectToCheckout({
+      sessionId: "<%= @session_id %>"
+    });
+  });
+</script>
   

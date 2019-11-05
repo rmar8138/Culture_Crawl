@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'payments/success'
   # page routes
   get 'pages/home'
   root to: "pages#home"
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
 
   # attendee routes
-  post "/attendees", to: "attendees#create", as: "attendees"
+  # post "/attendees", to: "attendees#create", as: "attendees"
   delete "/attendees", to: "attendees#destroy", as: "attendee"
 
   # profile routes
@@ -22,4 +23,8 @@ Rails.application.routes.draw do
   patch "/profiles/:id", to: "profiles#update"
   put "/profiles/:id", to: "profiles#update"
   get "/profiles/:id/edit", to: "profiles#edit", as: "edit_profile"
+
+  # payment routes
+  get "/payment/success", to: "payments#success"
+  post "/payment/webhook", to: "payments#webhook"
 end
