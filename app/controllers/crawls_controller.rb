@@ -12,6 +12,8 @@ class CrawlsController < ApplicationController
     end
     @reviews = Review.where(crawl_id: @crawl.id)
 
+
+
     session = Stripe::Checkout::Session.create(
       payment_method_types: ["card"],
       customer_email: current_user.email,

@@ -55,7 +55,21 @@
     <h3>Reviews</h3>
     <% if @reviews.length > 0 %>
       <% @reviews.each do |review| %>
-        <%= review %>
+        <h4>
+          <%= review.title %>
+        </h4>
+        <span>
+          <%= review.rating %>
+        </span>
+        <p>
+          <%= link_to review.user.profile.first_name, profile_path(review.user.profile) %>
+        </p>
+        <p>
+          <%= review.body %>
+        </p>
+        <% if review.user.id == current_user.id %>
+          <%= link_to 'Edit', edit_review_path(crawl_id: @crawl.id) %>
+        <% end %>
       <% end %>
     <% else %>
       <p>No reviews yet</p>

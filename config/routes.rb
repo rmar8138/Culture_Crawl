@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   resources :crawls
 
   # review routes
-  post "/crawls/:id/reviews", to: "reviews#create", as: "reviews"
-  get "/crawls/:id/reviews/new", to: "reviews#new", as: "new_review"
+  post "/reviews", to: "reviews#create", as: "reviews"
+  get "/reviews/new", to: "reviews#new", as: "new_review"
+  get "/review/edit", to: "review#edit", as: "edit_review"
 
   # location routes
   resources :locations

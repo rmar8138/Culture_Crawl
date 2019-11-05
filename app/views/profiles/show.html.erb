@@ -81,7 +81,7 @@
         <% if crawl.reviews.pluck(:user_id).include?(current_user.id) %>
           <h3>YOU REVIEWED THIS YAY</h3>
         <% else %>
-          <%= link_to 'Pending Review', new_review_path %>
+          <%= link_to 'Pending Review', new_review_path(crawl_id: crawl.id) %>
         <% end %>
       <% end %>
     </ul>

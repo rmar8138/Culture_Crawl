@@ -16,5 +16,6 @@
     <%= form.label :body %>
     <%= form.text_area :body %>
   </div>
-  <%= form.submit %>
+  <%= hidden_field_tag(:crawl_id, @crawl.id) %>
+  <%= form.submit "Post Review" %>
 <% end %>
