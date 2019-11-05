@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_many :crawls, dependent: :destroy
   has_many :attendees, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 end

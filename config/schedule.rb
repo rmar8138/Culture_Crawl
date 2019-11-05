@@ -19,6 +19,8 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every 1.minute do
-  runner Crawl.remove_past_crawls
+set :output, "../log/whenever.log"
+
+every :minute do
+  runner "Crawl.remove_past_crawls", environment: "development"
 end
