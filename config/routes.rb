@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "/reviews/new", to: "reviews#new", as: "new_review"
   get "/review/edit", to: "reviews#edit", as: "edit_review"
   patch "/reviews", to: "reviews#update"
+  delete "/reviews", to: "reviews#destroy"
 
   # location routes
   resources :locations

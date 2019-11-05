@@ -4,3 +4,4 @@
 </h2>
 
 <%= render 'form', review: @review, crawl: @crawl %>
+<%= link_to 'Delete Review', review_path(review_id: @review.id, crawl_id: @crawl.id), method: :delete %>

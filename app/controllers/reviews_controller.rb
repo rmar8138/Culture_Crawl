@@ -41,7 +41,14 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    
+    @review = Review.find(params[:review_id])
+    @crawl = Crawl.find(params[:crawl_id])
+
+    if @review.destroy
+      redirect_to crawl_path(@crawl)
+    else
+      render "edit"
+    end
   end
 
   private
