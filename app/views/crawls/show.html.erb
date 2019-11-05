@@ -50,7 +50,7 @@
   <% if @attendees.include?(current_user) %>
     <%= link_to 'Cancel Booking', attendee_path(crawl: @crawl.id, user: current_user.id), method: :delete %>
   <% else %>
-    <%= link_to 'Book', attendees_path(crawl: @crawl.id, user: current_user.id), method: :post, data: { stripe: "payment" }  %>
+    <button data-stripe="payment">Book</button>
   <% end %>
 <% end %>
 

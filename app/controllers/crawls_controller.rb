@@ -11,8 +11,6 @@ class CrawlsController < ApplicationController
       User.find(attendee.user_id)
     end
 
-    pp @crawl.title, @crawl.location, @crawl.description
-
     session = Stripe::Checkout::Session.create(
       payment_method_types: ["card"],
       customer_email: current_user.email,
