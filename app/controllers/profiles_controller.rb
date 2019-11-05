@@ -10,10 +10,12 @@ class ProfilesController < ApplicationController
       @profile = Profile.find(params[:id])
       @attending = []
       @attended = []
+      @current_crawls = []
+      @previous_crawls = []
 
       @profile.user.attendees.map do |crawl|
         current_crawl = Crawl.find(crawl.crawl_id)
-        
+
         if current_crawl.crawl_date.past?
           @attended.push(current_crawl)
         else
@@ -21,15 +23,13 @@ class ProfilesController < ApplicationController
         end
       end
 
-      # @attending = @profile.user.attendees.map do |crawl|
-      #   Crawl.find(crawl.crawl_id)
-      # end
-      # @attended = @profile.user.attendees.map do |crawl|
-      #   current_crawl = Crawl.find(crawl.crawl_id)
-      #   if current_crawl.crawl_date.past?
-      #     current_crawl
-      #   end
-      # end
+      @profile.user.crawls.map do |crawl|
+        if crawl.crawl_date.past?
+          @previous_crawls.push(crawl)
+        else
+          @current_crawls.push(crawl)
+        end
+      end
     else
       redirect_to new_profile_path
     end
