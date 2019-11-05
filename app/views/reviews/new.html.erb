@@ -1,1 +1,20 @@
 <h1>New Review</h1>
+<h2>
+  <%= @crawl.title %>
+</h2>
+
+<%= form_with model: @review, local: true do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :rating %>
+    <%= form.number_field :rating, in: 1..5, step: 0.5 %>
+  </div>
+  <div>
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+  <%= form.submit %>
+<% end %>

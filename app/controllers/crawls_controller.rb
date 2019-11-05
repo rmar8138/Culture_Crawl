@@ -10,6 +10,7 @@ class CrawlsController < ApplicationController
     @attendees = @crawl.attendees.map do |attendee|
       User.find(attendee.user_id)
     end
+    @reviews = Review.where(crawl_id: @crawl.id)
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ["card"],

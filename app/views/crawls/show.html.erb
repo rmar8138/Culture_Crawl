@@ -51,7 +51,16 @@
 </p>
 
 <% if @crawl.user.id != current_user.id %>
-  <% if !@crawl.crawl_date.past? %>
+  <% if @crawl.crawl_date.past? %>
+    <h3>Reviews</h3>
+    <% if @reviews.length > 0 %>
+      <% @reviews.each do |review| %>
+        <%= review %>
+      <% end %>
+    <% else %>
+      <p>No reviews yet</p>
+    <% end %>
+  <% else %>
     <% if @attendees.include?(current_user) %>
       <%= link_to 'Cancel Booking', attendee_path(crawl: @crawl.id, user: current_user.id), method: :delete %>
     <% else %>
