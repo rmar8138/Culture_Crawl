@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   # crawl routes
   resources :crawls
 
+  # review routes
+  resources :reviews
+
   # location routes
   resources :locations
   devise_for :users, controllers: { registrations: "registrations" }
