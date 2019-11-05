@@ -42,12 +42,25 @@
 <% end %>
 
 <% if user_signed_in? %>
-  <% if @attending.length %>
+  <% if @attending.length > 0 %>
     <h2>
       Attending(<%= @attending.length %>)
     </h2>
     <ul>
       <% @attending.each do |crawl| %>
+        <li>
+          <%= link_to crawl.title, crawl_path(crawl.id) %>
+          <%= crawl.user.profile.first_name %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+  <% if @attended.length > 0 %>
+    <h2>
+      Attended(<%= @attended.length %>)
+    </h2>
+    <ul>
+      <% @attended.each do |crawl| %>
         <li>
           <%= link_to crawl.title, crawl_path(crawl.id) %>
           <%= crawl.user.profile.first_name %>
