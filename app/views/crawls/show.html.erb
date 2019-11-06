@@ -11,6 +11,11 @@
 <p>
   <%= link_to @crawl.user.profile.first_name, profile_path(@crawl.user.profile) %>
 </p>
+<% if @crawl.rating %>
+  <p>
+    Rating: <%= @crawl.rating %>
+  </p>
+<% end %>
 <p>
   <%= @crawl.description %>
 </p>
