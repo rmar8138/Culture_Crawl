@@ -1,0 +1,18 @@
+.crawl {
+  &__image {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    background-color: $black;
+    margin-bottom: 2rem;
+  }
+
+  &__main-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__price {
+    font-size: 2.6rem;
+  }
+}
