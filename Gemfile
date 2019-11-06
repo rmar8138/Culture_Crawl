@@ -72,3 +72,7 @@ gem "active_storage_validations", "~> 0.8.4"
 gem "stripe", "~> 5.7"
 
 gem "whenever", "~> 1.0"
+
+gem "faker", "~> 2.7"
+
+gem "down", "~> 5.0"
