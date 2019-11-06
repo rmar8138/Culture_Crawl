@@ -27,4 +27,22 @@
   &__location > * {
     margin-bottom: 1rem;
   }
+
+  &__reviews {
+    margin-bottom: 4rem;
+  }
+
+  &__review {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+
+    &__profile-image {
+      width: 5rem;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
 }
