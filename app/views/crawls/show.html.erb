@@ -11,11 +11,20 @@
 <p>
   <%= link_to @crawl.user.profile.first_name, profile_path(@crawl.user.profile) %>
 </p>
+<% if @crawl.rating %>
+  <p>
+    Rating: <%= @crawl.rating %>
+  </p>
+<% end %>
 <p>
   <%= @crawl.description %>
 </p>
 <h2>
-  Attending(<%= @attendees.length %>)
+  <% if @crawl.crawl_date.past? %>
+    Attended(<%= @attendees.length %>)
+  <% else %>
+    Attending(<%= @attendees.length %>)
+  <% end %>
 </h2>
 <ul>
   <% @attendees.each do |attendee| %>
@@ -47,10 +56,35 @@
 </p>
 
 <% if @crawl.user.id != current_user.id %>
-  <% if @attendees.include?(current_user) %>
-    <%= link_to 'Cancel Booking', attendee_path(crawl: @crawl.id, user: current_user.id), method: :delete %>
+  <% if @crawl.crawl_date.past? %>
+    <h3>Reviews</h3>
+    <% if @reviews.length > 0 %>
+      <% @reviews.each do |review| %>
+        <h4>
+          <%= review.title %>
+        </h4>
+        <span>
+          <%= review.rating %>
+        </span>
+        <p>
+          <%= link_to review.user.profile.first_name, profile_path(review.user.profile) %>
+        </p>
+        <p>
+          <%= review.body %>
+        </p>
+        <% if review.user.id == current_user.id %>
+          <%= link_to 'Edit', edit_review_path(review_id: review.id, crawl_id: @crawl.id) %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>No reviews yet</p>
+    <% end %>
   <% else %>
-    <button data-stripe="payment">Book</button>
+    <% if @attendees.include?(current_user) %>
+      <%= link_to 'Cancel Booking', attendee_path(crawl: @crawl.id, user: current_user.id), method: :delete %>
+    <% else %>
+      <button data-stripe="payment">Book</button>
+    <% end %>
   <% end %>
 <% end %>
 

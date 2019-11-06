@@ -10,6 +10,9 @@ class CrawlsController < ApplicationController
     @attendees = @crawl.attendees.map do |attendee|
       User.find(attendee.user_id)
     end
+    @reviews = Review.where(crawl_id: @crawl.id)
+
+
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ["card"],
@@ -45,7 +48,9 @@ class CrawlsController < ApplicationController
   def create
     @crawl = Crawl.new(crawl_params)
     @crawl.user_id = current_user.id
+    @crawl.crawl_date = crawl_date_params
     @crawl.locations.build
+    
     if @crawl.save
       redirect_to crawl_path(@crawl)
     else
@@ -89,12 +94,15 @@ class CrawlsController < ApplicationController
       :price,
       :rating,
       :max_attendees,
-      :crawl_date,
-      :crawl_time,
       :finished,
       :user_id,
       :crawl_image,
       locations_attributes: Location.attribute_names.map(&:to_sym).push(:_destroy, :location_image)
     )
+  end
+
+  def crawl_date_params
+    date_values = params[:date].values.map(&:to_i)
+    crawl_date = DateTime.new(*date_values)
   end
 end

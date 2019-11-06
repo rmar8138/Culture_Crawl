@@ -28,9 +28,22 @@
   <% end %>
 <% end %>
 
-<% if @profile.user.crawls.any? %>
+<% if @current_crawls.length > 0 %>
   <h2>Crawls</h2>
-  <% @profile.user.crawls.each do |crawl| %>
+  <% @current_crawls.each do |crawl| %>
+    <h3>
+      <%= crawl.title %>
+    </h3>
+    <span>
+      <%= number_to_currency(crawl.price) %>
+    </span>
+    <%= link_to 'Details', crawl_path(crawl) %>
+  <% end %>
+<% end %>
+
+<% if @previous_crawls.length > 0 %>
+  <h2>Previous Crawls</h2>
+  <% @previous_crawls.each do |crawl| %>
     <h3>
       <%= crawl.title %>
     </h3>
@@ -42,7 +55,7 @@
 <% end %>
 
 <% if user_signed_in? %>
-  <% if @attending.length %>
+  <% if @attending.length > 0 %>
     <h2>
       Attending(<%= @attending.length %>)
     </h2>
@@ -52,6 +65,24 @@
           <%= link_to crawl.title, crawl_path(crawl.id) %>
           <%= crawl.user.profile.first_name %>
         </li>
+      <% end %>
+    </ul>
+  <% end %>
+  <% if @attended.length > 0 %>
+    <h2>
+      Attended(<%= @attended.length %>)
+    </h2>
+    <ul>
+      <% @attended.each do |crawl| %>
+        <li>
+          <%= link_to crawl.title, crawl_path(crawl.id) %>
+          <%= crawl.user.profile.first_name %>
+        </li>
+        <% if crawl.reviews.pluck(:user_id).include?(current_user.id) %>
+          <h3>YOU REVIEWED THIS YAY</h3>
+        <% else %>
+          <%= link_to 'Pending Review', new_review_path(crawl_id: crawl.id) %>
+        <% end %>
       <% end %>
     </ul>
   <% end %>

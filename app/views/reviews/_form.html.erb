@@ -1,0 +1,17 @@
+<%= form_with model: review, local: true do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :rating %>
+    <%= form.number_field :rating, in: 1..5, step: 0.5 %>
+  </div>
+  <div>
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+  <%= hidden_field_tag(:crawl_id, crawl.id) %>
+  <%= hidden_field_tag(:review_id, review.id) %>
+  <%= form.submit "Post Review" %>
+<% end %>

@@ -8,8 +8,27 @@ class ProfilesController < ApplicationController
   def show
     if Profile.exists?(params[:id])
       @profile = Profile.find(params[:id])
-      @attending = @profile.user.attendees.map do |crawl|
-        Crawl.find(crawl.crawl_id)
+      @attending = []
+      @attended = []
+      @current_crawls = []
+      @previous_crawls = []
+
+      @profile.user.attendees.map do |crawl|
+        current_crawl = Crawl.find(crawl.crawl_id)
+
+        if current_crawl.crawl_date.past?
+          @attended.push(current_crawl)
+        else
+          @attending.push(current_crawl)
+        end
+      end
+
+      @profile.user.crawls.map do |crawl|
+        if crawl.crawl_date.past?
+          @previous_crawls.push(crawl)
+        else
+          @current_crawls.push(crawl)
+        end
       end
     else
       redirect_to new_profile_path
