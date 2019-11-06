@@ -4,7 +4,7 @@
       <%= image_tag @crawl.crawl_image if @crawl.crawl_image.attached? %>
     </div>
     <div class="container">
-      <div class="crawl__main-info">
+      <section class="crawl__main-info">
         <h1 class="crawl__title">
           <%= @crawl.title %>
         </h1>
@@ -31,47 +31,69 @@
             <%= "#{@crawl.reviews.length} #{@crawl.reviews.length > 1 ? "Reviews" : "Review"}" %>
           </span>
         <% end %>
-      </div>
+      </section>
     </div>
   </header>
-  <p>
-    <%= @crawl.description %>
-  </p>
-  <h2>
-    <% if @crawl.crawl_date.past? %>
-      Attended(<%= @attendees.length %>)
-    <% else %>
-      Attending(<%= @attendees.length %>)
-    <% end %>
-  </h2>
-  <ul>
-    <% @attendees.each do |attendee| %>
-      <li>
-        <%= link_to attendee.profile.first_name, profile_path(attendee.profile) %>
-      </li>
-    <% end %>
-  </ul>
-  <h2>Itinerary</h2>
-    <% @crawl.locations.each do |location| %>
-      <%= image_tag location.location_image if location.location_image.attached? %>
-      <h3>
-        <%= location.title %>
-      </h3>
-      <span>
-        <%= location.location %>
-      </span>
+
+  <div class="container">
+    <section class="crawl__attendees">
+      <h2>
+        <% if @crawl.crawl_date.past? %>
+          Attended
+        <% else %>
+          Attending
+        <% end %>
+      </h2>
       <p>
-        <%= location.description %>
+        <%= crawl_attendees_string %>
       </p>
-    <% end %>
-  <h2>Crawl Route</h2>
-  <h2>Your Guide</h2>
-  <p>
-    <%= @crawl.user.profile.first_name %>
-  </p>
-  <p>
-    <%= @crawl.user.profile.bio %>
-  </p>
+    </section>
+  </div>
+
+  <div class="container">
+    <section class="crawl__description">
+      <h2>Description</h2>
+      <p>
+        <%= @crawl.description %>
+      </p>
+    </section>
+  </div>
+
+  <div class="container">
+    <section class="crawl__itinerary">
+      <h2>Itinerary</h2>
+        <% @crawl.locations.each do |location| %>
+          <div class="crawl__location">
+            <% if location.location_image.attached? %>
+              <div class="crawl__location__image">
+                <%= image_tag location.location_image %>
+              </div>
+            <% end %>
+            <h3>
+              <%= location.title %>
+            </h3>
+            <span>
+              <%= location.location %>
+            </span>
+            <p>
+              <%= location.description %>
+            </p>
+          </div>
+        <% end %>
+    </section>
+  </div>
+  
+  <div class="container">
+    <section class="crawl__guide">
+      <h2>Your Guide</h2>
+        <p>
+          <%= @crawl.user.profile.first_name %>
+        </p>
+        <p>
+          <%= @crawl.user.profile.bio %>
+        </p>
+    </section>
+  </div>
 
   <% if @crawl.user.id != current_user.id %>
     <% if @crawl.crawl_date.past? %>

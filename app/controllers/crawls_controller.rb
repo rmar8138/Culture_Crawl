@@ -1,5 +1,6 @@
 class CrawlsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  helper_method :crawl_attendees_string
 
   def index
     @crawls = Crawl.all
@@ -104,5 +105,38 @@ class CrawlsController < ApplicationController
   def crawl_date_params
     date_values = params[:date].values.map(&:to_i)
     crawl_date = DateTime.new(*date_values)
+  end
+
+  def crawl_attendees_string
+    crawl = Crawl.find(params[:id])
+
+    if crawl.crawl_date.past?
+      case crawl.attendees.length
+      when 0
+        "No one attended :("
+      when 1
+        "#{crawl.attendees[0].user.profile.first_name} attended."
+      when 2
+        "#{crawl.attendees[0].user.profile.first_name} and #{crawl.attendees[1].user.profile.first_name} attended."
+      when 3
+        "#{crawl.attendees[0].user.profile.first_name}, #{crawl.attendees[1].user.profile.first_name} and #{crawl.attendees[2].user.profile.first_name} attended."
+      else
+        "#{crawl.attendees[0].user.profile.first_name}, #{crawl.attendees[1].user.profile.first_name}, #{crawl.attendees[2].user.profile.first_name} and #{crawl.attendees.length - 3} more attended."
+      end
+    else
+      case crawl.attendees.length
+      when 0
+        "No one attending yet."
+      when 1
+        "#{crawl.attendees[0].user.profile.first_name} is attending."
+      when 2
+        "#{crawl.attendees[0].user.profile.first_name} and #{crawl.attendees[1].user.profile.first_name} are attending."
+      when 3
+        "#{crawl.attendees[0].user.profile.first_name}, #{crawl.attendees[1].user.profile.first_name} and #{crawl.attendees[2].user.profile.first_name} are attending."
+      else
+        "#{crawl.attendees[0].user.profile.first_name}, #{crawl.attendees[1].user.profile.first_name}, #{crawl.attendees[2].user.profile.first_name} and #{crawl.attendees.length - 3} more are attending."
+      end
+    end
+    
   end
 end
