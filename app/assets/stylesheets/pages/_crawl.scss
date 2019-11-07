@@ -13,6 +13,10 @@
     justify-content: center;
     background-color: $black;
     margin-bottom: 2rem;
+
+    img {
+      width: 100%;
+    }
   }
 
   &__main-info {
@@ -27,6 +31,14 @@
   &__location {
     margin-bottom: 2rem;
 
+    &__image {
+      width: 100%;
+
+      img {
+        width: 100%;
+      }
+    }
+
     &__location {
       color: $dark-grey;
     }
@@ -34,6 +46,22 @@
 
   &__location > * {
     margin-bottom: 1rem;
+  }
+
+  &__guide {
+    display: flex;
+    flex-direction: column;
+
+    &__image {
+      width: 5rem;
+
+      img {
+        display: inline-block;
+        width: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
   }
 
   &__reviews {

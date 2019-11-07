@@ -1,2 +1,13 @@
-<h1>Culture Crawl</h1>
-<p>Welcome yo!</p>
+<main class="home">
+  <div class="hero">
+    <h1>Culture Crawl</h1>
+  </div>
+  
+  <div class="container">
+    <section class="home__latest-crawls">
+      <h2>Latest Crawls</h2>
+      <%= render 'crawls', crawls: @latest_crawls %>
+      <%= link_to 'See More', crawls_path %>
+    </section>
+  </div>
+</main>

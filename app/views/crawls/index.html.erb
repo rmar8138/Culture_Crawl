@@ -11,7 +11,7 @@
     <%= crawl.description %>
   </p>
   <span>
-    <%= number_to_currency(crawl.price) %>
+    <%= number_to_currency(crawl.price / 100) %>
   </span>
   <%= link_to 'See More', crawl_path(crawl) %>
 <% end %>
