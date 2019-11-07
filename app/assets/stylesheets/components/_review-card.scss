@@ -5,10 +5,12 @@
 
   &__profile-image {
     width: 5rem;
+    height: 5rem;
 
     img {
       display: inline-block;
       width: 100%;
+      height: 100%;
       border-radius: 50%;
       object-fit: cover;
     }
