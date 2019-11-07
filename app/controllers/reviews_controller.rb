@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @reviews = Review.all
   end
@@ -10,6 +12,10 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @crawl = Crawl.find(params[:crawl_id])
+
+    if current_user.id != @crawl.user.id 
+      redirect_to crawl_path(@crawl)
+    end
   end
 
   def create
@@ -25,8 +31,12 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = Review.find(params[:review_id])
     @crawl = Crawl.find(params[:crawl_id])
+    @review = Review.find(params[:review_id])
+
+    if current_user.id != @crawl.user.id 
+      redirect_to crawl_path
+    end
   end
 
   def update

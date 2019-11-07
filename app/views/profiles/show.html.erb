@@ -48,13 +48,15 @@
               <div class="crawl-card__image">
                 <%= image_tag crawl.crawl_image %>
               </div>
-              <h3>
-                <%= crawl.title %>
-              </h3>
-              <span>
-                <%= number_to_currency(crawl.price) %>
-              </span>
-              <%= link_to 'Details', crawl_path(crawl) %>
+              <div class="crawl-card__text">
+                <h3>
+                  <%= crawl.title %>
+                </h3>
+                <span>
+                  <%= number_to_currency(crawl.price / 100) %>
+                </span>
+                <%= link_to 'Details', crawl_path(crawl) %>
+              </div>
             </li>
         <% end %>
         </ul>
@@ -75,7 +77,7 @@
                 <%= crawl.title %>
               </h3>
               <span>
-                <%= number_to_currency(crawl.price) %> pp
+                <%= number_to_currency(crawl.price / 100) %> pp
               </span>
               <%= link_to 'Details', crawl_path(crawl) %>
             </div>
@@ -101,7 +103,7 @@
                 <%= crawl.title %>
               </h3>
               <span>
-                <%= number_to_currency(crawl.price) %>
+                <%= number_to_currency(crawl.price / 100) %>
               </span>
               <%= link_to 'Details', crawl_path(crawl) %>
             </div>
@@ -127,10 +129,10 @@
                 <%= crawl.title %>
               </h3>
               <span>
-                <%= number_to_currency(crawl.price) %>
+                <%= number_to_currency(crawl.price / 100) %>
               </span>
               <%= link_to 'Details', crawl_path(crawl) %>
-              <% if crawl.reviews.pluck(:user_id).include?(current_user.id) %>
+              <% if user_signed_in? && crawl.reviews.pluck(:user_id).include?(current_user.id) %>
                 <h3>YOU REVIEWED THIS YAY</h3>
               <% else %>
                 <%= link_to 'Pending Review', new_review_path(crawl_id: crawl.id) %>
