@@ -17,6 +17,9 @@
         <span>
           <%= link_to "#{@crawl.user.profile.first_name} #{@crawl.user.profile.last_name}", profile_path(@crawl.user.profile) %>
         </span>
+        <span>
+          <%= @crawl.crawl_date.strftime("%m/%d/%Y, %I:%M%p") %>
+        </span>
         <span class="crawl__price">
           <%= number_to_currency(@crawl.price) %> pp
         </span>
@@ -28,7 +31,10 @@
             Rating: <%= @crawl.rating %> stars
           </span>
           <span>
-            <%= "#{@crawl.reviews.length} #{@crawl.reviews.length > 1 ? "Reviews" : "Review"}" %>
+            <%= "#{@crawl.reviews.length} " %>
+            <a href="#reviews">
+              <%= @crawl.reviews.length > 1 ? "Reviews" : "Review" %>
+            </a>
           </span>
         <% end %>
       </section>
@@ -72,7 +78,7 @@
             <h3>
               <%= location.title %>
             </h3>
-            <span>
+            <span class="crawl__location__location">
               <%= location.location %>
             </span>
             <p>
@@ -95,45 +101,12 @@
     </section>
   </div>
 
-  <div class="container">
-    <% if @crawl.crawl_date.past? %>
-      <section class="crawl__reviews">
-        <h2>Reviews</h2>
-          <% if @reviews.length > 0 %>
-            <% @reviews.each do |review| %>
-              <div class="crawl__review">
-                <div class="crawl__review__profile-image">
-                  <%= image_tag review.user.profile.profile_image %>
-                </div>
-                <h3>
-                  <%= link_to "#{review.user.profile.first_name} #{review.user.profile.last_name}",profile_path(review.user.profile) %>
-                </h3>
-                <span>
-                  "<%= review.title %>"
-                </span>
-                <span>
-                  <%= review.rating %> stars
-                </span>
-                <p>
-                  <%= review.body %>
-                </p>
-                <% if review.user.id == current_user.id %>
-                  <%= link_to 'Edit', edit_review_path(review_id:review.id, crawl_id: @crawl.id) %>
-                <% end %>
-              </div>
-            <% end %>
-          <% else %>
-            <p>No reviews yet</p>
-          <% end %>
-      </section>
-    <% else %>
-      <% if @attendees.include?(current_user) %>
-        <%= link_to 'Cancel Booking', attendee_path(crawl:@crawl.id, user: current_user.id), method: :delete %>
-      <% else %>
-        <button data-stripe="payment">Book</button>
-      <% end %>
-    <% end %>
-  </div>
+  <% if @crawl.crawl_date.past? %>
+    <%= render 'partials/reviews', reviews: @reviews, profile: false %>
+  <% else %>
+    <%= render 'book_bar', crawl: @crawl, booked: @attendees.include?(current_user) %>  
+  <% end %>
+ 
 </main>
 
 <script src="https://js.stripe.com/v3/"></script>

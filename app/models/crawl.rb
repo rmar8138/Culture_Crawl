@@ -11,7 +11,7 @@ class Crawl < ApplicationRecord
             :max_attendees,
             :crawl_date,
             presence: true
-  # validates :crawl_image, attached: true, content_type: [:png, :jpeg, :jpg]
+  validates :crawl_image, attached: true, content_type: [:png, :jpeg, :jpg]
   after_initialize :set_defaults, unless: :persisted?
   accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :all_blank
 

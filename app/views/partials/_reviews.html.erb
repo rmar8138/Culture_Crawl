@@ -1,0 +1,36 @@
+<div class="container">
+  <section id="reviews" class="review-cards">
+    <h2>Reviews(<%= reviews.length %>)</h2>
+      <% if reviews.length > 0 %>
+        <% reviews.each do |review| %>
+          <div class="review-card">
+            <div class="review-card__profile-image">
+              <%= image_tag review.user.profile.profile_image %>
+            </div>
+            <h3>
+              <%= link_to "#{review.user.profile.first_name} #{review.user.profile.last_name}",profile_path(review.user.profile) %>
+            </h3>
+            <span>
+              "<%= review.title %>"
+            </span>
+            <% if profile == true %>
+              <h4>
+                <%= review.crawl.title %>
+              </h4>
+            <% end %>
+            <span>
+              <%= review.rating %> stars
+            </span>
+            <p>
+              <%= review.body %>
+            </p>
+            <% if review.user.id == current_user.id %>
+              <%= link_to 'Edit', edit_review_path(review_id: review.id, crawl_id: review.crawl_id) %>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <p>No reviews yet</p>
+      <% end %>
+  </section>
+</div>

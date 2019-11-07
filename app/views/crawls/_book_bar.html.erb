@@ -1,0 +1,10 @@
+<div class="book">
+  <span>
+    <%= number_to_currency(crawl.price) %> pp
+  </span>
+  <% if booked %>
+    <%= link_to 'Cancel Booking', attendee_path(crawl: crawl, user: current_user.id), method: :delete %>
+  <% else %>
+    <button data-stripe="payment">Book</button>
+  <% end %>
+</div>
