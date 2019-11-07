@@ -1,0 +1,10 @@
+.crawl-card {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2rem;
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+  }
+}

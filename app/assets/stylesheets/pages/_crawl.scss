@@ -1,0 +1,42 @@
+.crawl {
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  section {
+    margin-bottom: 2rem;
+  }
+
+  &__image {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    background-color: $black;
+    margin-bottom: 2rem;
+  }
+
+  &__main-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__price {
+    font-size: 2.6rem;
+  }
+
+  &__location {
+    margin-bottom: 2rem;
+
+    &__location {
+      color: $dark-grey;
+    }
+  }
+
+  &__location > * {
+    margin-bottom: 1rem;
+  }
+
+  &__reviews {
+    margin-bottom: 4rem;
+  }
+}

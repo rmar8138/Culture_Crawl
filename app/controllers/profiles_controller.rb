@@ -12,6 +12,10 @@ class ProfilesController < ApplicationController
       @attended = []
       @current_crawls = []
       @previous_crawls = []
+      @crawl_ids = @profile.user.crawls.pluck(:id)
+      @reviews = Review.all.filter do |review|
+        @crawl_ids.include?(review.crawl_id)
+      end
 
       @profile.user.attendees.map do |crawl|
         current_crawl = Crawl.find(crawl.crawl_id)
