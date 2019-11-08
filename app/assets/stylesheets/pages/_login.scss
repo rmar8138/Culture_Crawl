@@ -1,0 +1,20 @@
+.login-page {
+  input {
+    width: 100%;
+    border: 1px solid $red-accent;
+    border-radius: 2px;
+    padding: 1rem;
+    font-size: 1.8rem;
+    outline: none;
+  }
+}
+
+.field {
+  // devise class
+  margin-bottom: 2rem;
+}
+
+.extra-links {
+  margin-top: 2rem;
+  text-align: center;
+}

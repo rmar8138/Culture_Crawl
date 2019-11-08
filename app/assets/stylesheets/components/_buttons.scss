@@ -1,9 +1,9 @@
-.book-button {
+.button {
   width: 100%;
   color: $red-accent;
   border: 1px solid $red-accent;
   border-radius: 2px;
-  padding: 7px;
+  padding: 1rem;
   transition: all 0.2s;
   cursor: pointer;
   background-color: $white;
@@ -12,4 +12,8 @@
     background-color: $red-accent;
     color: $white;
   }
+}
+
+.book-button {
+  @extend .button;
 }
