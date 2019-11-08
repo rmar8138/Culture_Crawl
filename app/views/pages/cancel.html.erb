@@ -2,47 +2,7 @@
   <h1>Cancel Booking</h1>
 </div>
 
-<div class="show-booking">
-  <div class="crawl__image">
-    <%= image_tag @crawl.crawl_image if @crawl.crawl_image.attached? %>
-  </div>
-  <div class="container">
-    <section class="crawl__main-info">
-      <h1 class="crawl__title">
-        <%= @crawl.title %>
-      </h1>
-      <% if user_signed_in? && @crawl.user.id == current_user.id %>
-        <%= link_to 'Edit', edit_crawl_path %>
-      <% end %>
-      <span>
-        <%= @crawl.location %>
-      </span>
-      <span>
-        <%= link_to "#{@crawl.user.profile.first_name} #{@crawl.user.profile.last_name}", profile_path(@crawl.user.profile) %>
-      </span>
-      <span>
-        <%= @crawl.crawl_date.strftime("%m/%d/%Y, %I:%M%p") %>
-      </span>
-      <span class="crawl__price">
-        <%= number_to_currency(@crawl.price / 100) %> pp
-      </span>
-      <span class="crawl__max-attendees">
-        Max <%= @crawl.max_attendees %> <%= @crawl.max_attendees > 1 ? "People" : "Person" %>
-      </span>
-      <% if @crawl.rating %>
-        <span>
-          Rating: <%= @crawl.rating %> stars
-        </span>
-        <span>
-          <%= "#{@crawl.reviews.length} " %>
-          <a href="#reviews">
-            <%= @crawl.reviews.length > 1 ? "Reviews" : "Review" %>
-          </a>
-        </span>
-      <% end %>
-    </section>
-  </div>
-</div>
+<%= render 'booking', crawl: @crawl %>
 
 <div class="container">
   <div class="cancel">

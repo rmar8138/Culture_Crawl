@@ -1,0 +1,15 @@
+.book-button {
+  width: 100%;
+  color: $red-accent;
+  border: 1px solid $red-accent;
+  border-radius: 2px;
+  padding: 7px;
+  transition: all 0.2s;
+  cursor: pointer;
+  background-color: $white;
+
+  &:hover {
+    background-color: $red-accent;
+    color: $white;
+  }
+}

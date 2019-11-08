@@ -1,6 +1,14 @@
-<h1>Confirm Booking</h1>
+<div class="container">
+  <h1>Confirm Booking</h1>
+</div>
 
-<button data-stripe="payment">Book</button>
+<div class="confirm">
+  <%= render 'booking', crawl: @crawl %>
+</div>
+
+<div class="container">
+  <button class="book-button" data-stripe="payment">Book</button>
+</div>
 
 <script src="https://js.stripe.com/v3/"></script>
 
