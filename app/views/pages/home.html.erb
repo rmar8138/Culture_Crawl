@@ -4,10 +4,10 @@
   </div>
   
   <div class="container">
+    <h2>Latest Crawls</h2>
     <section class="home__latest-crawls">
-      <h2>Latest Crawls</h2>
       <%= render 'crawls', crawls: @latest_crawls %>
-      <%= link_to 'See More', crawls_path %>
     </section>
+    <%= link_to 'See More', crawls_path %>
   </div>
 </main>
