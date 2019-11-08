@@ -5,6 +5,6 @@
   <% if booked %>
     <%= link_to 'Cancel Booking', attendee_path(crawl: crawl, user: current_user.id), method: :delete %>
   <% else %>
-    <button data-stripe="payment">Book</button>
+    <%= link_to 'Book', confirm_path %>
   <% end %>
 </div>

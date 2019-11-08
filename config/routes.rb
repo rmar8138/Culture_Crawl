@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   get 'payments/success'
   # page routes
-  get 'pages/home'
   root to: "pages#home"
+  get "/crawls/:id/confirm", to: "pages#confirm", as: "confirm"
 
   # crawl routes
   resources :crawls
