@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   get 'payments/success'
   # page routes
-  get 'pages/home'
   root to: "pages#home"
+  get "/crawls/:id/confirm", to: "pages#confirm", as: "confirm"
+  get "/crawls/:id/cancel", to: "pages#cancel", as: "cancel"
 
   # crawl routes
   resources :crawls
@@ -32,6 +33,6 @@ Rails.application.routes.draw do
   get "/profiles/:id/edit", to: "profiles#edit", as: "edit_profile"
 
   # payment routes
-  get "/payment/success", to: "payments#success"
+  get "/payment/success", to: "payments#success", as: "success"
   post "/payment/webhook", to: "payments#webhook"
 end

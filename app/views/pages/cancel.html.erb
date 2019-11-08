@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Cancel Booking</h1>
+</div>
+
+<%= render 'partials/booking', crawl: @crawl %>
+
+<div class="container">
+  <div class="cancel">
+    <span>Are you sure you want to cancel your booking? NO REFUNDS</span>
+    <%= link_to 'Cancel Booking', attendee_path(crawl: @crawl, user: current_user.id), method: :delete %>
+    <%= link_to 'Back', crawl_path(@crawl) %>
+  </div>
+</div>
