@@ -14,7 +14,8 @@
     </div>
   <% end %>
   <div class="inputfile-container">
-    <%= form.label :profile_image, class: "inputfile-label", value: "Upload a profile image" %>
+    <span>Profile Image</span>
+    <%= form.label :profile_image, class: "inputfile-label"%>
     <%= form.file_field :profile_image, accept: "image/png,image/gif,image/jpeg,image/jpg", class: "inputfile" %>
   </div>
   <div>
@@ -33,5 +34,5 @@
     <%= form.label :bio %>
     <%= form.text_area :bio %>
   </div>
-  <%= form.submit class: "button "%>
+  <%= form.submit class: "button"%>
 <% end %>
