@@ -2,14 +2,7 @@ class PaymentsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:webhook]
 
   def success
-    # only show confirm booking if user crawl attendee established
-    unless Attendee.exists?(
-      crawl_id: params[:crawlId],
-      user_id: params[:userId]
-    )
-      @crawl = Crawl.find(params[:crawlId])
-      redirect_to crawl_path(@crawl)
-    end
+    @crawl = Crawl.find(params[:crawlId])
   end
   
   def webhook

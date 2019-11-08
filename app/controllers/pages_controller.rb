@@ -10,6 +10,10 @@ class PagesController < ApplicationController
     @crawl = Crawl.find(params[:id])
     @public_key = Rails.application.credentials.dig(:stripe, :public_key)
 
+    if @crawl.attendees.pluck(:user_id).include?(current_user.id)
+      redirect_to crawl_path(@crawl)
+    end
+
     if user_signed_in?
       session = Stripe::Checkout::Session.create(
         payment_method_types: ["card"],
@@ -43,7 +47,7 @@ class PagesController < ApplicationController
     @public_key = Rails.application.credentials.dig(:stripe, :public_key)
 
     if user_signed_in? && @crawl.attendees.pluck(:user_id).include?(current_user.id)
-      
+
     end
   end
 end
