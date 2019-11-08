@@ -96,7 +96,7 @@
           <%= image_tag @crawl.user.profile.profile_image %>
         </div>
         <p>
-          <%= @crawl.user.profile.first_name %>
+          <%= link_to @crawl.user.profile.first_name, profile_path(@crawl.user.profile) %>
         </p>
         <p>
           <%= @crawl.user.profile.bio %>

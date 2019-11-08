@@ -1,9 +1,22 @@
 .home {
+  padding-bottom: 6rem;
+
   h2 {
     margin-bottom: 2rem;
   }
 
+  .about {
+    margin: 2rem 0;
+  }
+
   &__latest-crawls {
+    .see-more {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .crawls-container {
     ul {
       display: flex;
       flex-wrap: wrap;
@@ -27,7 +40,7 @@
 }
 
 .hero {
-  height: 80vh;
+  height: 60vh;
   width: 100vw;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(image-path(hero));

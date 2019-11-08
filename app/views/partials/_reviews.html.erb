@@ -24,7 +24,7 @@
             <p>
               <%= review.body %>
             </p>
-            <% if review.user.id == current_user.id %>
+            <% if user_signed_in? && review.user.id == current_user.id %>
               <%= link_to 'Edit', edit_review_path(review_id: review.id, crawl_id: review.crawl_id) %>
             <% end %>
           </div>

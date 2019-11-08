@@ -4,10 +4,21 @@
   </div>
   
   <div class="container">
+    <section class="about">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque vitae, cum ipsa, esse non dolore magni provident nobis sequi perspiciatis, adipisci maiores eligendi culpa illum accusantium quaerat beatae? Reprehenderit, ab ea atque placeat harum vel totam similique nam in quo sint quas libero accusamus ex vitae repellat quos nisi aut.
+      </p>
+    </section>
+
+
     <h2>Latest Crawls</h2>
     <section class="home__latest-crawls">
-      <%= render 'crawls', crawls: @latest_crawls %>
+      <div class="crawls-container">
+        <%= render 'crawls', crawls: @latest_crawls %>
+      </div>
+      <div class="see-more">
+        <%= link_to 'See More', crawls_path %>
+      </div>
     </section>
-    <%= link_to 'See More', crawls_path %>
   </div>
 </main>
