@@ -76,3 +76,5 @@ gem "whenever", "~> 1.0"
 gem "faker", "~> 2.7"
 
 gem "down", "~> 5.0"
+
+gem "aws-sdk-s3", "~> 1.53"
