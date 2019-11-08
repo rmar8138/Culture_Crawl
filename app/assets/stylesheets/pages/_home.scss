@@ -15,28 +15,6 @@
       justify-content: center;
     }
   }
-
-  .crawls-container {
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-evenly;
-
-      li {
-        width: 40%;
-
-        .crawl-card__text {
-          h3 {
-            font-size: 1.2rem;
-          }
-
-          a {
-            font-size: 1.2rem;
-          }
-        }
-      }
-    }
-  }
 }
 
 .hero {

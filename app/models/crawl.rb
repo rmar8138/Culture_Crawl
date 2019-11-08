@@ -14,6 +14,7 @@ class Crawl < ApplicationRecord
   validates :crawl_image, attached: true, content_type: [:png, :jpeg, :jpg]
   after_initialize :set_defaults, unless: :persisted?
   accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :all_blank
+  paginates_per 6
 
   def set_defaults
     self.finished ||= false

@@ -1,18 +1,20 @@
-<ul>
-  <% crawls.each do |crawl| %>
-    <li class="crawl-card">
-      <div class="crawl-card__image">
-        <%= image_tag crawl.crawl_image %>
-      </div>
-      <div class="crawl-card__text">
-        <h3>
-          <%= crawl.title %>
-        </h3>
-        <span>
-          <%= number_to_currency(crawl.price / 100) %>
-        </span>
-        <%= link_to 'Details', crawl_path(crawl) %>
-      </div>
-    </li>
-  <% end %>
-</ul>
+<div class="crawls-container">
+  <ul>
+    <% crawls.each do |crawl| %>
+      <li class="crawl-card">
+        <div class="crawl-card__image">
+          <%= image_tag crawl.crawl_image %>
+        </div>
+        <div class="crawl-card__text">
+          <h3>
+            <%= crawl.title %>
+          </h3>
+          <span>
+            <%= number_to_currency(crawl.price / 100) %>
+          </span>
+          <%= link_to 'Details', crawl_path(crawl) %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

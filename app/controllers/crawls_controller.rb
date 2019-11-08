@@ -3,7 +3,7 @@ class CrawlsController < ApplicationController
   helper_method :crawl_attendees_string
 
   def index
-    @crawls = Crawl.all
+    @crawls = Crawl.where("crawl_date > ?", DateTime.now).order(:created_at).page params[:page]
   end
 
   def show
