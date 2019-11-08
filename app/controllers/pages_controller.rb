@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  before_action :authenticate_user!, only: [:confirm, :cancel]
+
   def home
     @latest_crawls = Crawl.last(6)
     @highest_rated_crawls = Crawl.where("rating > ?", 0).order(:rating).last(6)
@@ -33,6 +35,15 @@ class PagesController < ApplicationController
 
       @session_id = session.id
     
+    end
+  end
+
+  def cancel
+    @crawl = Crawl.find(params[:id])
+    @public_key = Rails.application.credentials.dig(:stripe, :public_key)
+
+    if user_signed_in? && @crawl.attendees.pluck(:user_id).include?(current_user.id)
+      
     end
   end
 end

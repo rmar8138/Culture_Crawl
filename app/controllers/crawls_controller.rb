@@ -80,32 +80,34 @@ class CrawlsController < ApplicationController
 
   def crawl_attendees_string
     crawl = Crawl.find(params[:id])
+    first_three_attendees = crawl.attendees.first(3)
+    attendees_number = crawl.attendees.length
 
     if crawl.crawl_date.past?
-      case crawl.attendees.length
+      case attendees_number
       when 0
         "No one attended :("
       when 1
-        "#{crawl.attendees[0].user.profile.first_name} attended."
+        "#{first_three_attendees[0].user.profile.first_name} attended."
       when 2
-        "#{crawl.attendees[0].user.profile.first_name} and #{crawl.attendees[1].user.profile.first_name} attended."
+        "#{first_three_attendees[0].user.profile.first_name} and #{first_three_attendees[1].user.profile.first_name} attended."
       when 3
-        "#{crawl.attendees[0].user.profile.first_name}, #{crawl.attendees[1].user.profile.first_name} and #{crawl.attendees[2].user.profile.first_name} attended."
+        "#{first_three_attendees[0].user.profile.first_name}, #{first_three_attendees[1].user.profile.first_name} and #{first_three_attendees[2].user.profile.first_name} attended."
       else
-        "#{crawl.attendees[0].user.profile.first_name}, #{crawl.attendees[1].user.profile.first_name}, #{crawl.attendees[2].user.profile.first_name} and #{crawl.attendees.length - 3} more attended."
+        "#{first_three_attendees[0].user.profile.first_name}, #{first_three_attendees[1].user.profile.first_name}, #{first_three_attendees[2].user.profile.first_name} and #{attendees_number - 3} more attended."
       end
     else
-      case crawl.attendees.length
+      case attendees_number
       when 0
         "No one attending yet."
       when 1
-        "#{crawl.attendees[0].user.profile.first_name} is attending."
+        "#{first_three_attendees[0].user.profile.first_name} is attending."
       when 2
-        "#{crawl.attendees[0].user.profile.first_name} and #{crawl.attendees[1].user.profile.first_name} are attending."
+        "#{first_three_attendees[0].user.profile.first_name} and #{first_three_attendees[1].user.profile.first_name} are attending."
       when 3
-        "#{crawl.attendees[0].user.profile.first_name}, #{crawl.attendees[1].user.profile.first_name} and #{crawl.attendees[2].user.profile.first_name} are attending."
+        "#{first_three_attendees[0].user.profile.first_name}, #{first_three_attendees[1].user.profile.first_name} and #{first_three_attendees[2].user.profile.first_name} are attending."
       else
-        "#{crawl.attendees[0].user.profile.first_name}, #{crawl.attendees[1].user.profile.first_name}, #{crawl.attendees[2].user.profile.first_name} and #{crawl.attendees.length - 3} more are attending."
+        "#{first_three_attendees[0].user.profile.first_name}, #{first_three_attendees[1].user.profile.first_name}, #{first_three_attendees[2].user.profile.first_name} and #{attendees_number - 3} more are attending."
       end
     end
     

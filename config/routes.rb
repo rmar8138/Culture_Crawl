@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # page routes
   root to: "pages#home"
   get "/crawls/:id/confirm", to: "pages#confirm", as: "confirm"
+  get "/crawls/:id/cancel", to: "pages#cancel", as: "cancel"
 
   # crawl routes
   resources :crawls

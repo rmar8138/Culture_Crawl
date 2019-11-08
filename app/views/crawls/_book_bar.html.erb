@@ -3,7 +3,7 @@
     <%= number_to_currency(crawl.price / 100) %> pp
   </span>
   <% if booked %>
-    <%= link_to 'Cancel Booking', attendee_path(crawl: crawl, user: current_user.id), method: :delete %>
+    <%= link_to 'Cancel Booking', cancel_path %>
   <% else %>
     <%= link_to 'Book', confirm_path %>
   <% end %>
