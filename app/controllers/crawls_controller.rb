@@ -22,7 +22,6 @@ class CrawlsController < ApplicationController
   def create
     @crawl = Crawl.new(crawl_params)
     @crawl.user_id = current_user.id
-    @crawl.crawl_date = crawl_date_params
     
     if @crawl.save
       redirect_to crawl_path(@crawl)
@@ -70,13 +69,9 @@ class CrawlsController < ApplicationController
       :finished,
       :user_id,
       :crawl_image,
+      :crawl_date,
       locations_attributes: Location.attribute_names.map(&:to_sym).push(:_destroy, :location_image)
     )
-  end
-
-  def crawl_date_params
-    date_values = params[:date].values.map(&:to_i)
-    crawl_date = DateTime.new(*date_values)
   end
 
   def crawl_attendees_string

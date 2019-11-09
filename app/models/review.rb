@@ -3,6 +3,8 @@ class Review < ApplicationRecord
   belongs_to :crawl
   after_commit :update_crawl_rating
   after_commit :update_user_rating
+  validates :title, :body, presence: true
+  validates :rating, numericality: { greater_than: 0, less_than_or_equal_to: 5 }
 
   private
 
@@ -12,9 +14,9 @@ class Review < ApplicationRecord
     rating = nil
     if reviews_scores.length > 0
       # check if ratings exist first
-      rating = reviews_scores.reduce(:+) / reviews_scores.length
+      rating = ((reviews_scores.reduce(:+) / reviews_scores.length) * 2.0).round / 2.0
     end
-    self.crawl.update(rating: (rating * 2.0).round / 2.0)
+    self.crawl.update(rating: rating)
   end
 
   def update_user_rating

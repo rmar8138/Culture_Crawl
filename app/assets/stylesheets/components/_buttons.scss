@@ -1,4 +1,4 @@
-.button {
+.btn {
   width: 100%;
   color: $red-accent;
   border: 1px solid $red-accent;
@@ -15,5 +15,9 @@
 }
 
 .book-button {
-  @extend .button;
+  @extend .btn;
+}
+
+.delete-button {
+  @extend .btn;
 }

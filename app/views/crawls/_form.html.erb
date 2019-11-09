@@ -1,4 +1,4 @@
-<%= form_with model: crawl, local: true do |form| %>
+<%= form_with model: crawl, class: "form", local: true do |form| %>
   <% if crawl.errors.any? %>
     <div>
       <h2>
@@ -40,9 +40,11 @@
       </div>
   </div>
   <h2>Availability</h2>
+
   <div>
-    <%= form.label :crawl_date %>
-    <%= select_datetime() %>
+    <%= simple_fields_for crawl do |f| %>
+      <%= f.input :crawl_date, as: :date_time_picker %>
+    <% end %>
   </div>
   <div>
     <%= form.label :max_attendees %>
@@ -51,8 +53,11 @@
   <h2>Pricing</h2>
   <div>
     <%= form.label :price %>
-    <%= form.number_field :price, step: :any, value: (crawl.price / 100).to_f %>
+    <%= form.number_field :price, step: :any, value: ((crawl.price / 100.0) if crawl.price) %>
   </div>
-  <%= form.submit class: "button" %>
+  <%= form.submit class: "btn" %>
+  <% if type == "edit" %>
+    <%= link_to 'Delete Crawl', crawl_path, method: :delete, class: "delete-button" %>
+  <% end %>
 <% end %>
 
