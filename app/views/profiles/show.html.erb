@@ -132,7 +132,7 @@
                 <%= number_to_currency(crawl.price / 100.0) %>
               </span>
               <%= link_to 'Details', crawl_path(crawl) %>
-              <% if user_signed_in? %>
+              <% if user_signed_in? && @profile.user.id == current_user.id %>
                 <% if crawl.reviews.pluck(:user_id).include?(current_user.id) %>
                   You reviewed this
                 <% else %>
