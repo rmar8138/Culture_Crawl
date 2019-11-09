@@ -8,8 +8,15 @@ class PagesController < ApplicationController
 
   def confirm
     @current_user = User.find(current_user.id)
+    @crawl = Crawl.find(params[:id])
+
+    # redirect if crawl has no spots left
+    if @crawl.attendees.length == @crawl.max_attendees
+      redirect_to crawl_path(@crawl)
+    end
+
+    # make sure user has profile before booking crawl
     if @current_user.profile.present?
-      @crawl = Crawl.find(params[:id])
       @public_key = Rails.application.credentials.dig(:stripe, :public_key)
 
       if @crawl.attendees.pluck(:user_id).include?(current_user.id)

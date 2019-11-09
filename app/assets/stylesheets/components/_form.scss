@@ -3,27 +3,3 @@
     margin-bottom: 2rem;
   }
 }
-
-.inputfile-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.inputfile {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-}
-
-.inputfile-label {
-  width: auto;
-  background-color: $red-accent;
-  color: $white;
-  padding: 1rem;
-  border-radius: 2px;
-  margin: 2rem 0;
-  cursor: pointer;
-}

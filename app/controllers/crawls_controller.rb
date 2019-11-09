@@ -12,6 +12,7 @@ class CrawlsController < ApplicationController
       User.find(attendee.user_id)
     end
     @reviews = Review.where(crawl_id: @crawl.id)
+    @spots_left = @crawl.max_attendees - @attendees.length
   end
 
   def new

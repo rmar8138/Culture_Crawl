@@ -13,10 +13,9 @@
       </ul>
     </div>
   <% end %>
-  <div class="inputfile-container">
-    <span>Profile Image</span>
-    <%= form.label :profile_image, class: "inputfile-label"%>
-    <%= form.file_field :profile_image, accept: "image/png,image/gif,image/jpeg,image/jpg", class: "inputfile" %>
+  <div>
+    <%= form.label :profile_image %>
+    <%= form.file_field :profile_image, accept: "image/png,image/gif,image/jpeg,image/jpg" %>
   </div>
   <div>
     <%= form.label :first_name %>
