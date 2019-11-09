@@ -12,6 +12,8 @@
 //
 //= require rails-ujs
 //= require jquery
+//= require bootstrap-sprockets
+//= require datetime_picker_input
 //= require cocoon
 //= require activestorage
 //= require_tree .

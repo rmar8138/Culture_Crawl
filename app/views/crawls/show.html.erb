@@ -21,7 +21,7 @@
           <%= @crawl.crawl_date.strftime("%m/%d/%Y, %I:%M%p") %>
         </span>
         <span class="crawl__price">
-          <%= number_to_currency(@crawl.price / 100) %> pp
+          <%= number_to_currency(@crawl.price / 100.0) %> pp
         </span>
         <span class="crawl__max-attendees">
           Max <%= @crawl.max_attendees %> <%= @crawl.max_attendees > 1 ? "People" : "Person" %>
@@ -35,6 +35,10 @@
             <a href="#reviews">
               <%= @crawl.reviews.length > 1 ? "Reviews" : "Review" %>
             </a>
+          </span>
+        <% else %>
+          <span>
+            <%= @spots_left %> spot(s) left
           </span>
         <% end %>
       </section>
@@ -96,7 +100,7 @@
           <%= image_tag @crawl.user.profile.profile_image %>
         </div>
         <p>
-          <%= @crawl.user.profile.first_name %>
+          <%= link_to @crawl.user.profile.first_name, profile_path(@crawl.user.profile) %>
         </p>
         <p>
           <%= @crawl.user.profile.bio %>

@@ -78,3 +78,11 @@ gem "faker", "~> 2.7"
 gem "down", "~> 5.0"
 
 gem "aws-sdk-s3", "~> 1.53"
+
+gem "kaminari", "~> 1.1"
+
+gem "datetime_picker_input", "~> 4.17"
+
+gem "bootstrap-sass", "~> 3.4"
+
+gem "simple_form", "~> 5.0"

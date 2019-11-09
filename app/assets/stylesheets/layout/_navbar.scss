@@ -1,4 +1,4 @@
-.navbar {
+.navigation {
   padding: 2rem;
   display: flex;
   align-items: center;
@@ -11,6 +11,8 @@
 
   ul {
     display: flex;
+    align-items: center;
+    margin-bottom: 0;
   }
 
   ul > *:not(:last-child) {

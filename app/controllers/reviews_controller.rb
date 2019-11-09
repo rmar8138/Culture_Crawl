@@ -10,10 +10,13 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    # make sure user can't review their own crawl, 
+    # or review crawl they have already reviewed
     @review = Review.new
     @crawl = Crawl.find(params[:crawl_id])
 
-    if current_user.id != @crawl.user.id 
+    if current_user.id == @crawl.user.id || 
+       @crawl.reviews.pluck(:user_id).include?(current_user.id)
       redirect_to crawl_path(@crawl)
     end
   end

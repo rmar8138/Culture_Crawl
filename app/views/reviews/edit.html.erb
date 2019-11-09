@@ -1,7 +1,9 @@
-<h1>Edit Review</h1>
-<h2>
-  <%= @crawl.title %>
-</h2>
-
-<%= render 'form', review: @review, crawl: @crawl %>
-<%= link_to 'Delete Review', review_path(review_id: @review.id, crawl_id: @crawl.id), method: :delete %>
+<div class="crawl__image">
+  <%= image_tag @crawl.crawl_image if @crawl.crawl_image.attached? %>
+</div>
+<div class="container">
+  <div class="crawl">
+    <%= render 'crawl', crawl: @crawl, type: "edit" %>
+    <%= render 'form', review: @review, crawl: @crawl, type: "edit" %>
+  </div>
+</div>

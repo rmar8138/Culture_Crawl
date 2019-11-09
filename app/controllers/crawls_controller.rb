@@ -3,7 +3,7 @@ class CrawlsController < ApplicationController
   helper_method :crawl_attendees_string
 
   def index
-    @crawls = Crawl.all
+    @crawls = Crawl.where("crawl_date > ?", DateTime.now).order(:created_at).page params[:page]
   end
 
   def show
@@ -12,6 +12,7 @@ class CrawlsController < ApplicationController
       User.find(attendee.user_id)
     end
     @reviews = Review.where(crawl_id: @crawl.id)
+    @spots_left = @crawl.max_attendees - @attendees.length
   end
 
   def new
@@ -21,7 +22,6 @@ class CrawlsController < ApplicationController
   def create
     @crawl = Crawl.new(crawl_params)
     @crawl.user_id = current_user.id
-    @crawl.crawl_date = crawl_date_params
     
     if @crawl.save
       redirect_to crawl_path(@crawl)
@@ -40,7 +40,6 @@ class CrawlsController < ApplicationController
   def update
     @crawl = Crawl.find(params[:id])
     if @crawl.update(crawl_params)
-      p crawl_params
       redirect_to crawl_path(@crawl)
     else
       render 'edit'
@@ -59,6 +58,7 @@ class CrawlsController < ApplicationController
   private
 
   def crawl_params
+    params[:crawl][:price] = (params[:crawl][:price].to_f * 100).to_i
     params.require(:crawl).permit(
       :title,
       :location,
@@ -69,13 +69,9 @@ class CrawlsController < ApplicationController
       :finished,
       :user_id,
       :crawl_image,
+      :crawl_date,
       locations_attributes: Location.attribute_names.map(&:to_sym).push(:_destroy, :location_image)
     )
-  end
-
-  def crawl_date_params
-    date_values = params[:date].values.map(&:to_i)
-    crawl_date = DateTime.new(*date_values)
   end
 
   def crawl_attendees_string

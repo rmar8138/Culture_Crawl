@@ -1,17 +1,9 @@
-<h1>Crawls</h1>
-
-<% @crawls.each do |crawl| %>
-  <h2>
-    <%= crawl.title %>
-  </h2>
-  <span>
-    <%= link_to "#{crawl.user.profile.first_name}", profile_path(crawl.user.profile) %>
-  </span>
-  <p>
-    <%= crawl.description %>
-  </p>
-  <span>
-    <%= number_to_currency(crawl.price / 100) %>
-  </span>
-  <%= link_to 'See More', crawl_path(crawl) %>
-<% end %>
+<main class="crawls-page">
+  <div class="container">
+    <h1>Crawls</h1>
+    <%= render 'pages/crawls', crawls: @crawls %>
+    <div class="paginate-links">
+      <%= paginate @crawls %>
+    </div>
+  </div>
+</main>

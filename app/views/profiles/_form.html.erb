@@ -1,4 +1,4 @@
-<%= form_with model: profile, local: true do |form| %>
+<%= form_with model: profile, local: true, class: "form" do |form| %>
   <% if profile.errors.any? %>
     <div>
       <h2>
@@ -33,5 +33,5 @@
     <%= form.label :bio %>
     <%= form.text_area :bio %>
   </div>
-  <%= form.submit %>
+  <%= form.submit class: "btn"%>
 <% end %>
