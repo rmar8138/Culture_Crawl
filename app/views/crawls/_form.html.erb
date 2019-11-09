@@ -51,8 +51,8 @@
   <h2>Pricing</h2>
   <div>
     <%= form.label :price %>
-    <%= form.number_field :price %>
+    <%= form.number_field :price, step: :any, value: (crawl.price / 100).to_f %>
   </div>
-  <%= form.submit %>
+  <%= form.submit class: "button" %>
 <% end %>
 

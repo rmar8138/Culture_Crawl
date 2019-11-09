@@ -1,6 +1,6 @@
 <div class="book">
   <span>
-    <%= number_to_currency(crawl.price / 100) %> pp
+    <%= number_to_currency(crawl.price / 100.0) %> pp
   </span>
   <% if booked %>
     <%= link_to 'Cancel Booking', cancel_path %>

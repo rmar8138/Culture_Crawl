@@ -41,7 +41,6 @@ class CrawlsController < ApplicationController
   def update
     @crawl = Crawl.find(params[:id])
     if @crawl.update(crawl_params)
-      p crawl_params
       redirect_to crawl_path(@crawl)
     else
       render 'edit'
@@ -60,6 +59,7 @@ class CrawlsController < ApplicationController
   private
 
   def crawl_params
+    params[:crawl][:price] = (params[:crawl][:price].to_f * 100).to_i
     params.require(:crawl).permit(
       :title,
       :location,

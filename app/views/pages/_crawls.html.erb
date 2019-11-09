@@ -10,7 +10,7 @@
             <%= crawl.title %>
           </h3>
           <span>
-            <%= number_to_currency(crawl.price / 100) %>
+            <%= number_to_currency(crawl.price / 100.0) %>
           </span>
           <%= link_to 'Details', crawl_path(crawl) %>
         </div>
