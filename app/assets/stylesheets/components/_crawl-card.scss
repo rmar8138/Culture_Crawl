@@ -35,6 +35,10 @@
           font-size: 1.2rem;
         }
       }
+
+      @media only screen and (min-width: 780px) {
+        width: 30%;
+      }
     }
   }
 }
