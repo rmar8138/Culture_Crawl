@@ -13,7 +13,6 @@ class Crawl < ApplicationRecord
             presence: true
   validates :crawl_image, attached: true, content_type: [:png, :jpeg, :jpg]
   validates :max_attendees, numericality: { greater_than: 0 }
-  after_initialize :set_defaults, unless: :persisted?
   after_commit :handle_price
   accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :all_blank
   paginates_per 6
