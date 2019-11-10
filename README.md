@@ -1,9 +1,26 @@
 # Culture Crawl
 
 Website: https://culturecrawl.herokuapp.com/
+
 GitHub: https://github.com/rmar8138/Culture_Crawl
 
 Culture Crawl is a two-sided marketplace built on Ruby on Rails for the Coder Academy Fast Track Bootcamp.
+
+## Table of Contents
+
+1. [Purpose](#purpose)
+2. [Tech Stack](#tech-stack)
+3. [Features/Functionality](#features-functionality)
+4. [High Level Components](#high-level-components)
+5. [User Stories](#user-stories)
+6. [Sitemap](#sitemap)
+7. [Screenshots](#screenshots)
+8. [Wireframes](#wireframes)
+9. [Database Schema/ERD](#dtabase-schema)
+10. [Models](#models)
+11. [Database Relations](#database-relations)
+12. [Task Tracking](#task-tracking)
+13. [Third Party Services](#third-party-ser)
 
 ## Purpose
 
@@ -64,6 +81,24 @@ The Crawl is the representation of the product being sold, or in this case, the 
 
 The interaction between these two components is as such. A user can create, edit or delete a crawl, as well as book a crawl. When a crawl is finished, all users who have attended the crawl (attendees) are required to leave a review, and a rating based on how they felt about the experience. This review is able to be seen and read by other users, and serves as a score to represent the user who hosted the crawl.
 
+## User Stories
+
+> As a non-user, I want to be able to view all crawls without needing to sign up, so I can see first if there is anything interesting.
+
+> As a user, I want to be able to edit my profile if my details change.
+
+> As a user, I want to be able to create and manage crawls so I can host them to other users.
+
+> As a user, I don't want anyone to be able to edit my profile or crawls for security reasons.
+
+> As a past attendee, I want to be able to leave a review after attending the crawl so I can tell others my experience.
+
+> As a user, I shouldn't be able to view the booking page or pay for anything without having an account first, as I need an account to manage and view the crawls I am attending.
+
+> As a user, I shouldn't have to see the booking button for a crawl that I made, as it doesn't make sense to pay for a crawl that I am hosting.
+
+> As a user, I shouldn't be able to review a crawl that I hosted, as I could leave biased reviews to boost my ratings.
+
 ## Sitemap
 
 The following is a sitemap of the site as of the latest commit.
@@ -99,24 +134,6 @@ The following is a sitemap of the site as of the latest commit.
 **Login Page**
 
 ![Login Page](resources/screenshots/screenshot-login.png)
-
-## User Stories
-
-> As a non-user, I want to be able to view all crawls without needing to sign up, so I can see first if there is anything interesting.
-
-> As a user, I want to be able to edit my profile if my details change.
-
-> As a user, I want to be able to create and manage crawls so I can host them to other users.
-
-> As a user, I don't want anyone to be able to edit my profile or crawls for security reasons.
-
-> As a past attendee, I want to be able to leave a review after attending the crawl so I can tell others my experience.
-
-> As a user, I shouldn't be able to view the booking page or pay for anything without having an account first, as I need an account to manage and view the crawls I am attending.
-
-> As a user, I shouldn't have to see the booking button for a crawl that I made, as it doesn't make sense to pay for a crawl that I am hosting.
-
-> As a user, I shouldn't be able to review a crawl that I hosted, as I could leave biased reviews to boost my ratings.
 
 ## Wireframes
 
