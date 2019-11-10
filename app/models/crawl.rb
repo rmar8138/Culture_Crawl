@@ -18,19 +18,6 @@ class Crawl < ApplicationRecord
   accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :all_blank
   paginates_per 6
 
-  def set_defaults
-    self.finished ||= false
-  end
-
-  def remove_past_crawls
-    # cron job to check to see if crawl has passed and set finished boolean to true
-    Crawl.all.each do |crawl|
-      if crawl.crawl_date.past? && !crawl.finished
-        crawl.toggle(:finished)
-      end
-    end
-  end
-
   def handle_price
     # make sure incoming price is converted to integer (cents)
     price = (self.price.to_f * 100).to_i

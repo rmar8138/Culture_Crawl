@@ -71,7 +71,6 @@ for i in 1..20
     location: Faker::Address.city,
     description: Faker::Lorem.sentence(word_count: 30, supplemental: true, random_words_to_add: 15),
     price: rand(1000..5000),
-    finished: false,
     max_attendees: rand(10..20),
     crawl_date: Faker::Time.between(from: DateTime.now - 100, to: DateTime.now - 1),
     user_id: users.sample.id
@@ -103,7 +102,6 @@ for i in 1..10
     location: Faker::Address.city,
     description: Faker::Lorem.sentence(word_count: 30, supplemental: true, random_words_to_add: 15),
     price: rand(1000..5000),
-    finished: false,
     max_attendees: rand(10..20),
     crawl_date: Faker::Time.between(from: DateTime.now + 5, to: DateTime.now + 20),
     user_id: users.sample.id

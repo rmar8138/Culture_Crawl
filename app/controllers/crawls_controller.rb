@@ -66,7 +66,6 @@ class CrawlsController < ApplicationController
       :price,
       :rating,
       :max_attendees,
-      :finished,
       :user_id,
       :crawl_image,
       :crawl_date,
