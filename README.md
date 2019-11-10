@@ -16,17 +16,21 @@ Culture Crawl is a two-sided marketplace built on Ruby on Rails for the Coder Ac
 6. [Sitemap](#sitemap)
 7. [Screenshots](#screenshots)
 8. [Wireframes](#wireframes)
-9. [Database Schema/ERD](#dtabase-schema)
+9. [Database Schema/ERD](#database-schema)
 10. [Models](#models)
 11. [Database Relations](#database-relations)
 12. [Task Tracking](#task-tracking)
-13. [Third Party Services](#third-party-ser)
+13. [Third Party Services](#third-party-services)
+
+<a name="purpose"></a>
 
 ## Purpose
 
 Culture Crawl connects people who are passionate about discovering different cultures with people who are passionate about sharing their knowledge on these cultures. These passionate people are able to share knowledge not only of their cultural heritage, but the culture of the things that matter most to them outside that. For example, one might be interested in sharing knowledge about the photography culture in their area, or the architectural culture in their area, or maybe even the vintage watch or vintage records culture.
 
 The app is targeted to not only those with a focused interest on niche communities and cultures, but to the wider audience in general. A user who has zero knowledge on design may sign up for a design-themed crawl, and can learn something that they may not have ever had the chance to learn, from someone who is well versed in that sphere. Culture Crawl aims to facilitate a cultural exchange, which is open to everyone who wishes to partake.
+
+<a name="tech-stack"></a>
 
 ## Tech Stack
 
@@ -36,6 +40,8 @@ The app is targeted to not only those with a focused interest on niche communiti
 - Stripe (Payments)
 - AWS S3 (Image hosting)
 - Heroku (Deployment)
+
+<a name="features-functionality"></a>
 
 ## Features/Functionality
 
@@ -71,6 +77,8 @@ This is a feature that would be implemented following the Airbnb style listing f
 
 This is of course a crucial feature, which allows users to privately message each other in real time. Users would be able to interact with their hosts about the nature of the crawls, and ask any relevant questions pertaining to the crawl.
 
+<a name="high-level-components"></a>
+
 ## High Level Components
 
 The two main high level components of the app are the User, and the Crawl.
@@ -80,6 +88,8 @@ The User represents both the person trying to offer their services as a knowledg
 The Crawl is the representation of the product being sold, or in this case, the service being exchanged. This crawl will have specific information, such as the maximum number of people who can attend, and the price per person, which is set by the user maintaining the crawl. In addition, the crawl will also hold general informtation, such as a title, image, location and a description. The crawl itself will also have an itinerary, which is built on multiple locations upon which the crawl is comprised of.
 
 The interaction between these two components is as such. A user can create, edit or delete a crawl, as well as book a crawl. When a crawl is finished, all users who have attended the crawl (attendees) are required to leave a review, and a rating based on how they felt about the experience. This review is able to be seen and read by other users, and serves as a score to represent the user who hosted the crawl.
+
+<a name="user-stories"></a>
 
 ## User Stories
 
@@ -99,11 +109,15 @@ The interaction between these two components is as such. A user can create, edit
 
 > As a user, I shouldn't be able to review a crawl that I hosted, as I could leave biased reviews to boost my ratings.
 
+<a name="sitemap"></a>
+
 ## Sitemap
 
 The following is a sitemap of the site as of the latest commit.
 
 ![Sitemap](resources/sitemap/sitemap.png)
+
+<a name="screenshots"></a>
 
 ## Screenshots
 
@@ -135,9 +149,13 @@ The following is a sitemap of the site as of the latest commit.
 
 ![Login Page](resources/screenshots/screenshot-login.png)
 
+<a name="wireframes"></a>
+
 ## Wireframes
 
 A link to the wireframes can be found [here](resources/wireframes/culture-crawl-wireframes.pdf).
+
+<a name="database-schema"></a>
 
 ## Database Schema/ERD
 
@@ -150,6 +168,8 @@ The ERD that was conceived during the wireframing/prototyping process slightly d
 **Final ERD**
 
 ![Final ERD](resources/erd/erd-final.png)
+
+<a name="models"></a>
 
 ## Models
 
@@ -196,6 +216,8 @@ The Review model is responsible for handling information about user reviews on a
 
 The Attendee model is responsible for holding information about which user is attending which crawl, and has a belongs_to relationship with both the User model and the Crawl model.
 
+<a name="database-relations"></a>
+
 ## Database Relations
 
 The tables present in the Culture Crawl database are as follows:
@@ -214,6 +236,8 @@ The Review and Attendee tables are both join tables that join the User and the C
 
 The Active_Storage table is used to track uploaded images of profiles, crawls and locations. These are represented in the Models themselves through the has_one_attached relationship.
 
+<a name="task-tracking"></a>
+
 ## Task Tracking
 
 Task tracking for this project was done through a trello board, which proved to be immensely helpful in determining what tasks needed to be completed, the priority of these tasks, and motivation in terms of watching the completed list pile up.
@@ -227,6 +251,8 @@ The card stacks were divided into Backlog, In Progress and Completed. When a fea
 There were several Backlog piles in order to differentiate the different tasks that needed to be completed. I implemented a Backend Backlog for the Rails side of things, such as working with the Database and MVC architecture. The Frontend Backlog related to more styling features, using CSS and Sass. The Documentation Backlog contained everything that needed to be compeleted for the assignment in terms of documentation, such as the different components of the README.md file and the slide deck/presentation. Finally, there was a Stretch Goals Backlog which contained tasks that were to be implemented if there was time.
 
 Halfway through the assignment, I added a Errors Backlog which housed all the different issues and bugs that I would encounter throughout the making of the app. These issues and bugs would oftentimes pop up in multiples, which made everything easier to track when placed in a trello deck, which I could then return to every so often and work through.
+
+<a name="third-party-services"></a>
 
 ## Third Party Services
 
