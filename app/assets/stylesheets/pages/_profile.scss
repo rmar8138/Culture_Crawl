@@ -28,4 +28,15 @@
       object-fit: cover;
     }
   }
+
+  @media only screen and (min-width: $bp-tablet) {
+    .crawls__list {
+      display: flex;
+      justify-content: space-evenly;
+
+      li {
+        width: 40%;
+      }
+    }
+  }
 }
