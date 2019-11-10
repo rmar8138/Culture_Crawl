@@ -19,6 +19,15 @@
     img {
       width: 100%;
     }
+
+    @media only screen and (min-width: $bp-tablet) {
+      max-height: 60vh;
+      width: auto;
+
+      img {
+        width: auto;
+      }
+    }
   }
 
   &__main-info {
@@ -38,6 +47,10 @@
 
       img {
         width: 100%;
+      }
+
+      @media only screen and (min-width: $bp-tablet) {
+        width: 50%;
       }
     }
 

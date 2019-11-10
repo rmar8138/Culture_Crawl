@@ -47,14 +47,14 @@
 
   <div class="container">
     <section class="crawl__attendees">
-      <h2>
+      <h2 class="crawl__heading">
         <% if @crawl.crawl_date.past? %>
           Attended
         <% else %>
           Attending
         <% end %>
       </h2>
-      <p>
+      <p class="crawl__content">
         <%= crawl_attendees_string %>
       </p>
     </section>
@@ -72,24 +72,24 @@
   <div class="container">
     <section class="crawl__itinerary">
       <h2>Itinerary</h2>
-        <% @crawl.locations.each do |location| %>
-          <div class="crawl__location">
-            <% if location.location_image.attached? %>
-              <div class="crawl__location__image">
-                <%= image_tag location.location_image %>
-              </div>
-            <% end %>
-            <h3>
-              <%= location.title %>
-            </h3>
-            <span class="crawl__location__location">
-              <%= location.location %>
-            </span>
-            <p>
-              <%= location.description %>
-            </p>
-          </div>
-        <% end %>
+      <% @crawl.locations.each do |location| %>
+        <div class="crawl__location">
+          <% if location.location_image.attached? %>
+            <div class="crawl__location__image">
+              <%= image_tag location.location_image %>
+            </div>
+          <% end %>
+          <h3>
+            <%= location.title %>
+          </h3>
+          <span class="crawl__location__location">
+            <%= location.location %>
+          </span>
+          <p>
+            <%= location.description %>
+          </p>
+        </div>
+      <% end %>
     </section>
   </div>
   
