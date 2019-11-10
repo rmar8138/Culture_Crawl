@@ -7,6 +7,10 @@
     font-size: 1.8rem;
     outline: none;
   }
+
+  @media only screen and (min-width: $bp-tablet) {
+    padding: 0 8rem;
+  }
 }
 
 .field {

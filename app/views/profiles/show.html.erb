@@ -14,7 +14,7 @@
         <%= @profile.rating %> stars
       </span>
       <span>
-        <%= "#{@profile.user.reviews.length} #{@profile.user.reviews.length > 0 ? "Reviews" : "Review"}" %>
+        <%= "#{@profile.user.reviews.length} Review(s)" %>
       </span>
     <% end %>
     <% if user_signed_in? %>
@@ -42,7 +42,7 @@
   <% if @current_crawls.length > 0 %>
     <section class="profile__current-crawls">
       <h2>Crawls</h2>
-        <ul>
+        <ul class="crawls__list">
           <% @current_crawls.each do |crawl| %>
             <li class="crawl-card">
               <div class="crawl-card__image">
@@ -66,7 +66,7 @@
   <% if @previous_crawls.length > 0 %>
     <section class="profile__past-crawls">
       <h2>Previous Crawls</h2>
-      <ul>
+      <ul class="crawls__list">
         <% @previous_crawls.each do |crawl| %>
           <li class="crawl-card">
             <div class="crawl-card__image">
@@ -92,7 +92,7 @@
       <h2>
         Attending(<%= @attending.length %>)
       </h2>
-      <ul>
+      <ul class="crawls__list">
         <% @attending.each do |crawl| %>
           <li class="crawl-card">
             <div class="crawl-card__image">
@@ -118,7 +118,7 @@
       <h2>
         Attended(<%= @attended.length %>)
       </h2>
-      <ul>
+      <ul class="crawls__list">
         <% @attended.each do |crawl| %>
           <li class="crawl-card">
             <div class="crawl-card__image">
